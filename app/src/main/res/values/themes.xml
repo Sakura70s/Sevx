@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+<!--  使 TabLayout 的字体不是全大写  -->
+    <style name="TabLayoutTextStyle" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">14dp</item>
+    </style>
 </resources>

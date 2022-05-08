@@ -1,4 +1,4 @@
-package top.sakura70s.sevx.helper;
+package top.sakura70s.sevx.helpers;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 

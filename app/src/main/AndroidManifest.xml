@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="top.sakura70s.sevx">
+    package="top.sakura70s.sevx"
+    android:versionCode="1"
+    android:versionName="孤山寺北贾亭西">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,18 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sevx">
         <activity
-            android:name=".LoginActivity"
+            android:name=".activitys.SevxActivity"
+            android:exported="false"
+            android:label="@string/title_activity_sevx" />
+        <activity
+            android:name=".activitys.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activitys.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

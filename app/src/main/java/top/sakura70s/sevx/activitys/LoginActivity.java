@@ -1,4 +1,4 @@
-package top.sakura70s.sevx;
+package top.sakura70s.sevx.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,14 +16,16 @@ import java.io.IOException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import top.sakura70s.sevx.helper.JsonFrom;
-import top.sakura70s.sevx.helper.StringHash;
-import top.sakura70s.sevx.helper.HttpHelper;
+import top.sakura70s.sevx.R;
+import top.sakura70s.sevx.SevxConsts;
+import top.sakura70s.sevx.helpers.JsonFrom;
+import top.sakura70s.sevx.helpers.StringHash;
+import top.sakura70s.sevx.helpers.HttpHelper;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     // 硬编码测试用户
-    final String account = "Sakura70s";
-    final String url = "https://pi.7os.top/Sevx/Auth/login/";
+    final String account = SevxConsts.USER;
+    final String url = SevxConsts.LOGIN_URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Response response = okHttpClient.newCall(request).execute();
                     // 通过后方API返回的值 决定使登录成功还是登录失败
                     if (response.code() == 200) {
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, SevxActivity.class);
                         startActivity(intent);
                         // 进入主页面以后关闭登录页面
                         LoginActivity.this.finish();

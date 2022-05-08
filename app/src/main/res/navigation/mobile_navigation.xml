@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_video">
+
+    <fragment
+        android:id="@+id/navigation_video"
+        android:name="top.sakura70s.sevx.fragments.video.VideoFragment"
+        android:label="@string/title_video"
+        tools:layout="@layout/fragment_video" />
+
+    <fragment
+        android:id="@+id/navigation_music"
+        android:name="top.sakura70s.sevx.fragments.MusicFragment"
+        android:label="@string/title_music"
+        tools:layout="@layout/fragment_music" />
+
+    <fragment
+        android:id="@+id/navigation_novel"
+        android:name="top.sakura70s.sevx.fragments.NovelFragment"
+        android:label="@string/title_novel"
+        tools:layout="@layout/fragment_novel" />
+
+    <fragment
+        android:id="@+id/navigation_comic"
+        android:name="top.sakura70s.sevx.fragments.ComicFragment"
+        android:label="@string/title_comic"
+        tools:layout="@layout/fragment_comic" />
+</navigation>

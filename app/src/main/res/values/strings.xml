@@ -1,6 +1,27 @@
 <resources>
     <string name="app_name">Sevx</string>
+    <integer name="version_code">1</integer>
+    <string name="version_name">孤山寺北贾亭西</string>
     <string name="login_hint">口令：</string>
-    <string name="login">登录</string>
+    <string name="login">link Start!</string>
     <string name="login_user_img">用户头像</string>
+    <string name="video_img">剧照</string>
+    <string name="title_activity_sevx">SevxActivity</string>
+
+    <string name="title_video">Video</string>
+    <string name="title_animation">Animation</string>
+    <string name="title_film">Film</string>
+    <string name="title_tv">Tv</string>
+    <string name="title_sv">Sv</string>
+    <string name="title_music">Music</string>
+    <string name="title_novel">Novel</string>
+    <string name="title_comic">Comic</string>
+
+    <string name="test">测试</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

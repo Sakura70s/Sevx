@@ -4,7 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Code/Android/Sevx/app/src/main/res/drawable/ic_launcher_background.xml" value="0.166" />
-        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/activity_main.xml" value="0.39947916666666666" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/activity_sevx.xml" value="0.2" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_comic.xml" value="0.20989583333333334" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_dashboard.xml" value="0.20989583333333334" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_music.xml" value="0.176" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_novel.xml" value="0.20989583333333334" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_video.xml" value="0.176" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_video_animation.xml" value="0.2" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_video_film.xml" value="0.39947916666666666" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_video_sv.xml" value="0.39947916666666666" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_video_tv.xml" value="0.39947916666666666" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/item_book.xml" value="0.20989583333333334" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/item_music.xml" value="0.20989583333333334" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/item_video.xml" value="0.2" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/menu/bottom_nav_menu.xml" value="0.264" />
         <entry key="..\:/Code/Android/Sevx/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.166" />
       </map>
     </option>

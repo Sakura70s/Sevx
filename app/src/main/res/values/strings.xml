@@ -7,6 +7,8 @@
     <string name="login_user_img">用户头像</string>
     <string name="video_img">剧照</string>
     <string name="title_activity_sevx">SevxActivity</string>
+    <string name="search_hint">在此输入你想要搜索的东西。。。</string>
+    <string name="search">搜索</string>
 
     <string name="title_video">Video</string>
     <string name="title_animation">Animation</string>
@@ -22,6 +24,47 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="seriesFlag">系列Flag</string>
+    <string name="flagEdit">True of False</string>
+    <string name="seriesId">系列ID</string>
+    <string name="seriesIdEdit">输入系列所属ID</string>
+    <string name="editName">名称</string>
+    <string name="editNameEdit">输入名称</string>
+    <string name="editYear">年份</string>
+    <string name="editYearEdit">输入年份</string>
+    <string name="director">导演</string>
+    <string name="directorEdit">输入导演名称</string>
+    <string name="screenWriter">编剧</string>
+    <string name="screenWriterEdit">输入编剧名称</string>
+    <string name="make">出品方</string>
+    <string name="makeEdit">输入制作公司名称</string>
+    <string name="logo">Logo</string>
+    <string name="logoEdit">输入封面链接</string>
+    <string name="amount">集数</string>
+    <string name="amountEdit">输入集数</string>
+    <string name="localFlag">本地Flag</string>
+    <string name="localUrl">本地URL</string>
+    <string name="localUrlEdit">输入本地地址</string>
+    <string name="remoteFlag">远程Flag</string>
+    <string name="remoteUrl">远程URL</string>
+    <string name="remoteUrlEdit">输入远程地址</string>
+    <string name="container">容器格式</string>
+    <string name="containerEdit">输入容器格式</string>
+    <string name="codeV">视频编码</string>
+    <string name="codeVEdit">输入本地视频编码格式</string>
+    <string name="codeA">音频编码</string>
+    <string name="codeAEdit">输入本地音频编码格式</string>
+    <string name="subType">字幕类型</string>
+    <string name="subTypeEdit">输入影片包含字幕类型</string>
+    <string name="subTeam">字幕组</string>
+    <string name="subTeamEdit">输入字幕组</string>
+    <string name="lastWatch">最后观看</string>
+    <string name="lastWatchEdit">键入最后观看时间</string>
+    <string name="updateTime">更新时间</string>
+    <string name="remark">备注</string>
+    <string name="remarkEdit">输入备注</string>
+
 </resources>

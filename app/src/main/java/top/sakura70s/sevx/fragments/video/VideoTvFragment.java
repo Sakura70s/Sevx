@@ -1,5 +1,8 @@
 package top.sakura70s.sevx.fragments.video;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,30 +10,60 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
+import top.sakura70s.sevx.activitys.SearchActivity;
+import top.sakura70s.sevx.activitys.SevxActivity;
 import top.sakura70s.sevx.adapters.video.VideoItemTvAdapter;
 import top.sakura70s.sevx.beans.VideoTvBean;
 import top.sakura70s.sevx.helpers.HttpHelper;
+import top.sakura70s.sevx.helpers.RequestHelper;
 
-public class VideoTvFragment extends Fragment{
+
+public class VideoTvFragment extends Fragment implements View.OnClickListener{
     // 实例化 适配器
     private VideoItemTvAdapter videoItemTvAdapter;
+    private List<VideoTvBean> list;
+    Activity sevxActivity;
+    private String uName;
+    private String uPassword;
+
+    private final Handler handler = new Handler(Looper.myLooper()){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            videoItemTvAdapter.setData(list);
+            videoItemTvAdapter.notifyItemChanged(list.size());
+            swipeRefreshLayout.setRefreshing(false);
+        }
+    };
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        list = ((SevxActivity)context).getTvList("Init");
+        sevxActivity = getActivity();
+        uName = ((SevxActivity) context).getUName();
+        uPassword = ((SevxActivity) context).getUPassword();
+    }
 
     // Activity onStart时
     @Override
@@ -44,46 +77,57 @@ public class VideoTvFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        videoItemTvAdapter = new VideoItemTvAdapter();
-
-        // 同步 请求接口
-        new Thread(() -> {
-            try {
-                // 构建请求
-                Request request = new HttpHelper().getMediaJson(SevxConsts.VIDEO_TV_GET);
-
-                // 执行，拿到数据
-                Response response = new OkHttpClient().newCall(request).execute();
-                ResponseBody responseBody =response.body();
-
-                // 拿到 JSON 字符串
-                String Tv_Json = responseBody.string();
-
-                // 解析
-                VideoTvBean[] videoTvBeans = new Gson().fromJson(Tv_Json, VideoTvBean[].class);
-
-                // 构建结果集合
-                List<VideoTvBean> list = Arrays.asList(videoTvBeans);
-
-                // 在主线程将数据传递给 适配器
-                getActivity().runOnUiThread(() -> videoItemTvAdapter.setData(list));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }).start();
-
-
-
-        // 绑定 RecyclerView 控件
-        RecyclerView tvRecyclerView = view.findViewById(R.id.recyclerview_video_tv);
-
-        // 1. 设置 layoutManager
-        tvRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        // 2. 设置 适配器
-        tvRecyclerView.setAdapter(videoItemTvAdapter);
-
+        this.initView(view);
+        this.initSwipeRefresh();
     }
 
+    private void initView(View view){
+        videoItemTvAdapter = new VideoItemTvAdapter();
+        videoItemTvAdapter.setData(list);
+        RecyclerView tvRecyclerView = view.findViewById(R.id.recyclerview_video_tv);
+        tvRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        tvRecyclerView.setAdapter(videoItemTvAdapter);
+
+        FloatingActionButton addButton = sevxActivity.findViewById(R.id.float_button_tv_add);
+        FloatingActionButton searchButton = sevxActivity.findViewById(R.id.float_button_tv_search);
+        addButton.setOnClickListener(this);
+        searchButton.setOnClickListener(this);
+    }
+
+    private void initSwipeRefresh(){
+        swipeRefreshLayout = sevxActivity.findViewById(R.id.tv_refresh);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            SevxActivity sevxActivity = (SevxActivity) getActivity();
+            if (sevxActivity != null) {
+                sevxActivity.getTvList("Refresh");
+            }
+            Request request = new RequestHelper().getMediaJson(SevxConsts.VIDEO_TV_GET);
+            new Thread(() -> {
+                list = new HttpHelper().getTvList(request, new OkHttpClient(), new Gson());
+
+                handler.sendEmptyMessage(0);
+            }).start();
+        });
+    }
+
+    @Override
+    public void onClick(View view) {
+        // Tv 添加按钮 逻辑
+        if (view.getId() == R.id.float_button_tv_add){
+            Toast.makeText(getContext(), "正在路上。。。", Toast.LENGTH_SHORT).show();
+        }
+        // Tv 搜索按钮 逻辑
+        if (view.getId() == R.id.float_button_tv_search){
+            Intent intent = new Intent(getActivity(), SearchActivity.class);
+            this.setIntentData(intent);
+            startActivity(intent);
+        }
+    }
+
+    private void setIntentData(Intent intent) {
+        intent.putExtra(SevxConsts.FROM, SevxConsts.LIST);
+        intent.putExtra(SevxConsts.TYPE, SevxConsts.TV);
+        intent.putExtra(SevxConsts.UNAME, uName);
+        intent.putExtra(SevxConsts.UPASSWORD, uPassword);
+    }
 }

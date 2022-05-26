@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import top.sakura70s.sevx.R;
+import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.activitys.MainActivity;
 import top.sakura70s.sevx.beans.MusicBean;
 
@@ -34,15 +35,12 @@ public class MusicItemAdapter extends RecyclerView.Adapter<MusicItemAdapter.Musi
     public void onBindViewHolder(@NonNull MusicItemHolder holder, int position) {
         holder.bindData(list.get(position));
         String id = String.valueOf(list.get(position).getId());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Context context = holder.itemView.getContext();
-                Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra("Type", "Music");
-                intent.putExtra("ID", id);
-                context.startActivity(intent);
-            }
+        holder.itemView.setOnClickListener(view -> {
+            Context context = holder.itemView.getContext();
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.putExtra(SevxConsts.TYPE, SevxConsts.MUSIC);
+            intent.putExtra(SevxConsts.ID, id);
+            context.startActivity(intent);
         });
     }
 
@@ -53,10 +51,10 @@ public class MusicItemAdapter extends RecyclerView.Adapter<MusicItemAdapter.Musi
 
     public void setData(List<MusicBean> list) {
         this.list = list;
-        notifyDataSetChanged();
+        notifyItemChanged(list.size());
     }
 
-    public class MusicItemHolder extends RecyclerView.ViewHolder {
+    public static class MusicItemHolder extends RecyclerView.ViewHolder {
 
         private final TextView music_title;
         private final TextView music_info;
@@ -71,7 +69,7 @@ public class MusicItemAdapter extends RecyclerView.Adapter<MusicItemAdapter.Musi
 
         public void bindData(MusicBean musicBean) {
             music_title.setText(musicBean.getMusic_name());
-            music_info.setText(musicBean.getArtist() + " - " + musicBean.getAlbum());
+            music_info.setText(String.format("%s - %s", musicBean.getArtist(), musicBean.getAlbum()));
             Glide.with(itemView).load(musicBean.getLogo()).into(music_img);
         }
     }

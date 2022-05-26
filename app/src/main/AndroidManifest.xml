@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sevx">
         <activity
+            android:name=".activitys.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activitys.EditActivity"
+            android:exported="false" />
+        <activity
             android:name=".activitys.SevxActivity"
             android:exported="false"
             android:label="@string/title_activity_sevx" />
@@ -28,13 +34,7 @@
         </activity>
         <activity
             android:name=".activitys.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -20,4 +20,19 @@ public class JsonFrom {
         return json;
     }
 
+    public JSONObject deleteJson(Integer id, String uName, String uPassword) {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("name", uName);
+            json.put("password", uPassword);
+            json.put("id", id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return json;
+    }
+
+
 }

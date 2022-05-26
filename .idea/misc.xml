@@ -4,16 +4,26 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Code/Android/Sevx/app/src/main/res/drawable/ic_launcher_background.xml" value="0.166" />
-        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/activity_login.xml" value="0.2" />
-        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/activity_main.xml" value="0.39947916666666666" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/activity_edit.xml" value="0.11214087117701575" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/activity_search.xml" value="0.264" />
         <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/activity_sevx.xml" value="0.2" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/activity_test.xml" value="0.2" />
         <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_comic.xml" value="0.20989583333333334" />
         <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_dashboard.xml" value="0.20989583333333334" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_details_animation.xml" value="0.39947916666666666" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_details_book.xml" value="0.21316033364226136" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_details_music.xml" value="0.264" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_details_sv.xml" value="0.39947916666666666" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_details_video.xml" value="0.264" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_edit_animation.xml" value="0.16666666666666666" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_edit_video.xml" value="0.3333333333333333" />
         <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_music.xml" value="0.176" />
         <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_novel.xml" value="0.20989583333333334" />
         <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_video.xml" value="0.176" />
-        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_video_animation.xml" value="0.2" />
-        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_video_film.xml" value="0.39947916666666666" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_video_animation.xml" value="0.264" />
+        <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_video_film.xml" value="0.1" />
         <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_video_sv.xml" value="0.39947916666666666" />
         <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/fragment_video_tv.xml" value="0.39947916666666666" />
         <entry key="..\:/Code/Android/Sevx/app/src/main/res/layout/item_book.xml" value="0.20989583333333334" />

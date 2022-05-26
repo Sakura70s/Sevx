@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.activitys.MainActivity;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.beans.VideoSvBean;
@@ -27,7 +28,7 @@ public class VideoItemSvAdapter extends RecyclerView.Adapter<VideoItemSvAdapter.
     @NonNull
     @Override
     public VideoItemSvAdapter.VideoItemSvHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new VideoItemSvAdapter.VideoItemSvHolder(
+        return new VideoItemSvHolder(
                 LayoutInflater.from(parent.getContext()).inflate(R.layout.item_video, parent, false));
     }
 
@@ -38,19 +39,16 @@ public class VideoItemSvAdapter extends RecyclerView.Adapter<VideoItemSvAdapter.
         // 获取当前条目对应的 ID 编号
         String id = String.valueOf(list.get(position).getId());
         // 点击事件
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 获取上下文对象
-                Context context = holder.itemView.getContext();
-                // 跳转
-                Intent intent = new Intent(context, MainActivity.class);
-                // 这是由 Sv 发起的跳转
-                intent.putExtra("Type", "Sv");
-                intent.putExtra("ID", id);
-                context.startActivity(intent);
+        holder.itemView.setOnClickListener(view -> {
+            // 获取上下文对象
+            Context context = holder.itemView.getContext();
+            // 跳转
+            Intent intent = new Intent(context, MainActivity.class);
+            // 这是由 Sv 发起的跳转
+            intent.putExtra(SevxConsts.TYPE, SevxConsts.SV);
+            intent.putExtra(SevxConsts.ID, id);
+            context.startActivity(intent);
 
-            }
         });
     }
 
@@ -63,11 +61,11 @@ public class VideoItemSvAdapter extends RecyclerView.Adapter<VideoItemSvAdapter.
     //
     public void setData(List<VideoSvBean> list) {
         this.list = list;
-        notifyDataSetChanged();
+        notifyItemChanged(list.size());
     }
 
     // 设置具体 Item 的内容
-    public class VideoItemSvHolder extends RecyclerView.ViewHolder {
+    public static class VideoItemSvHolder extends RecyclerView.ViewHolder {
 
         private final TextView sv_make;
         private final TextView sv_title;

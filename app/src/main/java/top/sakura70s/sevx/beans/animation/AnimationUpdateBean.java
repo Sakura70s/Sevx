@@ -1,6 +1,6 @@
-package top.sakura70s.sevx.beans;
+package top.sakura70s.sevx.beans.animation;
 
-public class VideoAnimationBean {
+public class AnimationUpdateBean {
 
     private Integer id;
     private Boolean seriesflag;
@@ -24,6 +24,8 @@ public class VideoAnimationBean {
     private String lastwatch;
     private String updatetime;
     private String remark;
+    private String uname;
+    private String upassword;
 
     public Integer getId() {
         return id;
@@ -201,31 +203,19 @@ public class VideoAnimationBean {
         this.remark = remark;
     }
 
-    @Override
-    public String toString() {
-        return "VideoAnimationBean{" +
-                "id=" + id +
-                ", seriesflag=" + seriesflag +
-                ", seriesid=" + seriesid +
-                ", animation_name='" + animation_name + '\'' +
-                ", animation_year='" + animation_year + '\'' +
-                ", director='" + director + '\'' +
-                ", screenwriter='" + screenwriter + '\'' +
-                ", make='" + make + '\'' +
-                ", logo='" + logo + '\'' +
-                ", amount=" + amount +
-                ", localflag=" + localflag +
-                ", localurl='" + localurl + '\'' +
-                ", remoteflag=" + remoteflag +
-                ", remoteurl='" + remoteurl + '\'' +
-                ", container='" + container + '\'' +
-                ", codev='" + codev + '\'' +
-                ", codea='" + codea + '\'' +
-                ", subtype='" + subtype + '\'' +
-                ", subteam='" + subteam + '\'' +
-                ", lastwatch='" + lastwatch + '\'' +
-                ", updatetime='" + updatetime + '\'' +
-                ", remark='" + remark + '\'' +
-                '}';
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public String getUpassword() {
+        return upassword;
+    }
+
+    public void setUpassword(String upassword) {
+        this.upassword = upassword;
     }
 }

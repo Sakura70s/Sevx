@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import top.sakura70s.sevx.R;
+import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.adapters.video.VideoFragmentAdapter;
 
 public class VideoFragment extends Fragment {
@@ -43,10 +44,10 @@ public class VideoFragment extends Fragment {
 
         // 设置 tabLayoutList 的内容
         tabLayout.setupWithViewPager(viewPager);
-        tabTextList.add("Animation");
-        tabTextList.add("Film");
-        tabTextList.add("Tv");
-        tabTextList.add("Sv");
+        tabTextList.add(SevxConsts.ANIMATION);
+        tabTextList.add(SevxConsts.FILM);
+        tabTextList.add(SevxConsts.TV);
+        tabTextList.add(SevxConsts.SV);
 
         // 添加 Fragment list
         List<Fragment> fragmentList = new ArrayList<>();
@@ -56,7 +57,8 @@ public class VideoFragment extends Fragment {
         fragmentList.add(new VideoSvFragment());
 
         // 实例化一个适配器
-        VideoFragmentAdapter videoFragmentAdapter = new VideoFragmentAdapter(getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_SET_USER_VISIBLE_HINT, fragmentList);
+        VideoFragmentAdapter videoFragmentAdapter = new VideoFragmentAdapter(getChildFragmentManager(),
+                FragmentStatePagerAdapter.BEHAVIOR_SET_USER_VISIBLE_HINT, fragmentList);
         // 关联 tabLayout 与 适配器
         viewPager.setAdapter(videoFragmentAdapter);
 

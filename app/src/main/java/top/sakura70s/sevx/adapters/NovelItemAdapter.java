@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import top.sakura70s.sevx.R;
+import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.activitys.MainActivity;
 import top.sakura70s.sevx.beans.NovelBean;
 
@@ -34,15 +35,12 @@ public class NovelItemAdapter extends RecyclerView.Adapter<NovelItemAdapter.Nove
     public void onBindViewHolder(@NonNull NovelItemHolder holder, int position) {
         holder.bindData(list.get(position));
         String id = String.valueOf(list.get(position).getId());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Context context = holder.itemView.getContext();
-                Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra("Type", "Novel");
-                intent.putExtra("ID", id);
-                context.startActivity(intent);
-            }
+        holder.itemView.setOnClickListener(view -> {
+            Context context = holder.itemView.getContext();
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.putExtra(SevxConsts.TYPE, SevxConsts.NOVEL);
+            intent.putExtra(SevxConsts.ID, id);
+            context.startActivity(intent);
         });
     }
 
@@ -53,10 +51,10 @@ public class NovelItemAdapter extends RecyclerView.Adapter<NovelItemAdapter.Nove
 
     public void setData(List<NovelBean> list) {
         this.list = list;
-        notifyDataSetChanged();
+        notifyItemChanged(list.size());
     }
 
-    public class NovelItemHolder extends RecyclerView.ViewHolder {
+    public static class NovelItemHolder extends RecyclerView.ViewHolder {
 
         private final TextView novel_title;
         private final TextView novel_info;
@@ -71,7 +69,7 @@ public class NovelItemAdapter extends RecyclerView.Adapter<NovelItemAdapter.Nove
 
         public void bindData(NovelBean novelBean) {
             novel_title.setText(novelBean.getNovel_name());
-            novel_info.setText(novelBean.getAuthor() + " - " + novelBean.getNovel_status());
+            novel_info.setText(String.format("%s - %s", novelBean.getAuthor(), novelBean.getNovel_status()));
             Glide.with(itemView).load(novelBean.getLogo()).into(novel_img);
         }
     }

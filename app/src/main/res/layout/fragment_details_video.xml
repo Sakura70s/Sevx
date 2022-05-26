@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.video.DetailsVideoFragment">
+
+<!--    头图模块信息-->
+    <ImageView
+        android:id="@+id/details_video_mediaInfo"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/video_img"
+        android:scaleType="centerCrop">
+
+    </ImageView>
+    <!--        名字-->
+    <TextView
+        android:id="@+id/details_video_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_video_mediaInfo"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp" />
+    <!--        制作-->
+    <TextView
+        android:id="@+id/details_video_make"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_video_title"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="12sp" />
+    <!--        导演-->
+    <TextView
+        android:id="@+id/details_video_director"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_video_make"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="12sp" />
+    <!--        编剧-->
+    <TextView
+        android:id="@+id/details_video_screen_writer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/details_video_director"
+        android:textSize="12sp" />
+<!-- 系列-->
+    <TextView
+        android:id="@+id/details_video_series"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_video_screen_writer"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp" />
+<!--    集数-->
+    <TextView
+        android:id="@+id/details_video_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_below="@id/details_video_series"/>
+<!--编码信息-->
+    <LinearLayout
+        android:id="@+id/details_video_code_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/details_video_amount">
+<!--        容器-->
+        <TextView
+            android:id="@+id/details_video_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+<!--        视频编码-->
+        <TextView
+            android:id="@+id/details_video_codev"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+<!--        音频编码-->
+        <TextView
+            android:id="@+id/details_video_codea"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+<!--    位置信息-->
+    <LinearLayout
+        android:id="@+id/details_video_url_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_below="@id/details_video_code_info">
+<!--        标志-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+<!--            本地标志-->
+            <TextView
+                android:id="@+id/details_video_local_flag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+<!--            远程标志-->
+            <TextView
+                android:id="@+id/details_video_remote_flag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/details_video_local_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/details_video_remote_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/details_video_sub_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_below="@id/details_video_url_info">
+        <TextView
+            android:id="@+id/details_video_sub_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"/>
+        <TextView
+            android:id="@+id/details_video_sub_team"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/details_video_last_watch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_video_sub_info"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/details_video_last_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_video_last_watch"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"/>
+    <TextView
+        android:id="@+id/details_video_remark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_video_last_update"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"/>
+
+
+</RelativeLayout>

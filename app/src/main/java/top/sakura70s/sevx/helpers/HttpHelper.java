@@ -126,6 +126,10 @@ public class HttpHelper {
         }
     }
 
+
+
+
+
     /**
      * 获取电影列表
      * @param filmRequest Request
@@ -145,6 +149,10 @@ public class HttpHelper {
             return null;
         }
     }
+
+
+
+
 
     /**
      * 获取Tv
@@ -166,6 +174,10 @@ public class HttpHelper {
         }
     }
 
+
+
+
+
     /**
      * 获取Sv
      * @param svRequest Request
@@ -186,6 +198,10 @@ public class HttpHelper {
         }
     }
 
+
+
+
+
     /**
      * 获取Music
      * @param musicRequest Request
@@ -205,7 +221,6 @@ public class HttpHelper {
             return null;
         }
     }
-
     /**
      * 获取音乐详情
      * @param id Music id
@@ -223,6 +238,10 @@ public class HttpHelper {
             return null;
         }
     }
+
+
+
+
 
     /**
      * 获取小说
@@ -243,6 +262,27 @@ public class HttpHelper {
             return null;
         }
     }
+    /**
+     * 获取小说详情
+     * @param id Novel Id
+     * @return NovelBean
+     */
+    public NovelBean getNovelById(Integer id){
+        Request request = requestHelper.getDetailsJson(SevxConsts.NOVEL_GET_ID, id);
+        try {
+            Response response = okHttpClient.newCall(request).execute();
+            if (response.code() == 200) {
+                ResponseBody responseBody = response.body();
+                return gson.fromJson(responseBody != null ? responseBody.string() : null, NovelBean.class);
+            } else return null;
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+
+
+
 
     /**
      * 获取漫画列表

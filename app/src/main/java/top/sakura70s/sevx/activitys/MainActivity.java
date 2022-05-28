@@ -23,7 +23,9 @@ import okhttp3.Response;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.beans.MusicBean;
+import top.sakura70s.sevx.beans.NovelBean;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
+import top.sakura70s.sevx.fragments.DetailsBookFragment;
 import top.sakura70s.sevx.fragments.DetailsMusicFragment;
 import top.sakura70s.sevx.fragments.video.DetailsVideoFragment;
 import top.sakura70s.sevx.helpers.HttpHelper;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private VideoAnimationBean animationBean;
     private MusicBean musicBean;
+    private NovelBean novelBean;
     private Integer id;
     private String type;
     private String uName;
@@ -87,19 +90,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 handler.sendEmptyMessage(0);
             } break;
 
-//            case SevxConsts.TV:{
-//                handler.sendEmptyMessage(0);
-//            } break;
-//
-//            case SevxConsts.SV:{
-//                handler.sendEmptyMessage(0);
-//            } break;
+            case SevxConsts.TV:{
+                handler.sendEmptyMessage(0);
+            } break;
+
+            case SevxConsts.SV:{
+                handler.sendEmptyMessage(0);
+            } break;
 
             case SevxConsts.MUSIC:{
                 new Thread(() -> {
                     musicBean = new HttpHelper().getMusicById(id);
                     handler.sendEmptyMessage(0);
                 }).start();
+            } break;
+
+            case SevxConsts.NOVEL:{
+                new Thread(() -> {
+                    novelBean = new HttpHelper().getNovelById(id);
+                    handler.sendEmptyMessage(0);
+                }).start();
+            } break;
+
+            case SevxConsts.COMIC:{
+                handler.sendEmptyMessage(0);
             }
         }
     }
@@ -127,7 +141,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         if (type.equals(SevxConsts.NOVEL) || type.equals(SevxConsts.COMIC)) {
+            DetailsBookFragment detailsBookFragment = new DetailsBookFragment();
+            detailsBookFragment.setArguments(this.getBundle());
 
+            fragmentTransaction.add(R.id.main_view, detailsBookFragment);
+            fragmentTransaction.commit();
         }
     }
 
@@ -232,6 +250,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    /**
+     * 获取传递给 Fragment 的数据
+     * @return Bundle
+     */
     private Bundle getBundle(){
         Bundle bundle = new Bundle();
         bundle.putString(SevxConsts.TYPE, type);
@@ -246,6 +268,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case SevxConsts.MUSIC:{
                 bundle.putSerializable(SevxConsts.MUSIC_BEAN, musicBean);
+                return bundle;
+            }
+
+            case SevxConsts.NOVEL:{
+                bundle.putSerializable(SevxConsts.NOVEL_BEAN, novelBean);
                 return bundle;
             }
         }

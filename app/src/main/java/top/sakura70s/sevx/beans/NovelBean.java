@@ -1,6 +1,8 @@
 package top.sakura70s.sevx.beans;
 
-public class NovelBean {
+import java.io.Serializable;
+
+public class NovelBean implements Serializable {
 
     private Integer id;
     private Boolean seriesflag;

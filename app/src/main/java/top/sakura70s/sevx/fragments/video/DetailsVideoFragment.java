@@ -132,9 +132,13 @@ public class DetailsVideoFragment extends Fragment {
                 title.setText(type);
             } break;
 
-//            case SevxConsts.TV:{
-//                title.setText(type);
-//            } break;
+            case SevxConsts.TV:{
+                title.setText(type);
+            } break;
+
+            case SevxConsts.SV:{
+                title.setText(type);
+            } break;
         }
     }
 }

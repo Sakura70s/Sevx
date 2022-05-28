@@ -37,7 +37,7 @@ public class VideoItemFilmAdapter extends RecyclerView.Adapter<VideoItemFilmAdap
     public void onBindViewHolder(@NonNull VideoItemFilmAdapter.VideoItemFilmHolder holder, int position) {
         holder.bindData(list.get(position));
         // 获取当前条目对应的 ID 编号
-        String id = String.valueOf(list.get(position).getId());
+        Integer id = list.get(position).getId();
         // 点击事件
         holder.itemView.setOnClickListener(view -> {
             // 获取上下文对象

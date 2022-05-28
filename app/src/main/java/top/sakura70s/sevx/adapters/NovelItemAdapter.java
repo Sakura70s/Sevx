@@ -34,7 +34,7 @@ public class NovelItemAdapter extends RecyclerView.Adapter<NovelItemAdapter.Nove
     @Override
     public void onBindViewHolder(@NonNull NovelItemHolder holder, int position) {
         holder.bindData(list.get(position));
-        String id = String.valueOf(list.get(position).getId());
+        Integer id = list.get(position).getId();
         holder.itemView.setOnClickListener(view -> {
             Context context = holder.itemView.getContext();
             Intent intent = new Intent(context, MainActivity.class);

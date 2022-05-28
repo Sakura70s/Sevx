@@ -22,7 +22,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
+import top.sakura70s.sevx.beans.MusicBean;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
+import top.sakura70s.sevx.fragments.DetailsMusicFragment;
 import top.sakura70s.sevx.fragments.video.DetailsVideoFragment;
 import top.sakura70s.sevx.helpers.HttpHelper;
 import top.sakura70s.sevx.helpers.RequestHelper;
@@ -31,6 +33,7 @@ import top.sakura70s.sevx.helpers.JsonFrom;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private VideoAnimationBean animationBean;
+    private MusicBean musicBean;
     private Integer id;
     private String type;
     private String uName;
@@ -52,56 +55,82 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.initData();
     }
 
-    private void initData() {
+
+    /**
+     * 初始化视图
+     */
+    private void initView(){
         Intent intent = getIntent();
         uName = intent.getStringExtra(SevxConsts.UNAME);
         uPassword = intent.getStringExtra(SevxConsts.UPASSWORD);
         id = intent.getIntExtra(SevxConsts.ID, 0);
         type = intent.getStringExtra(SevxConsts.TYPE);
-
-        switch (type) {
-            case SevxConsts.ANIMATION: {
-                new Thread(() -> {
-                    HttpHelper httpHelper = new HttpHelper();
-                    animationBean = httpHelper.getAnimationById(id);
-                    handler.sendEmptyMessage(0);
-                }).start();
-            } break;
-
-            case SevxConsts.FILM: {
-
-            } break;
-        }
-    }
-
-    private void startFragment() {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        // 影视
-        if (type.equals(SevxConsts.ANIMATION) || type.equals(SevxConsts.FILM) || type.equals(SevxConsts.TV) || type.equals(SevxConsts.SV)) {
-            DetailsVideoFragment detailsVideoFragment = new DetailsVideoFragment();
-
-            Bundle bundle = new Bundle();
-            this.setBundleData(bundle);
-            detailsVideoFragment.setArguments(bundle);
-
-            fragmentTransaction.add(R.id.main_view, detailsVideoFragment);
-            fragmentTransaction.commit();
-        }
-        if (type.equals(SevxConsts.MUSIC)) {
-
-        }
-        if (type.equals(SevxConsts.NOVEL) || type.equals(SevxConsts.COMIC)) {
-
-        }
-
-    }
-
-    private void initView(){
         FloatingActionButton deleteButton = findViewById(R.id.float_button_main_delete);
         FloatingActionButton editButton = findViewById(R.id.float_button_main_edit);
         deleteButton.setOnClickListener(this);
         editButton.setOnClickListener(this);
     }
+
+    /**
+     * 根据传入的 Id 以及 Type 获取具体的信息
+     */
+    private void initData() {
+        switch (type) {
+            case SevxConsts.ANIMATION: {
+                new Thread(() -> {
+                    animationBean = new HttpHelper().getAnimationById(id);
+                    handler.sendEmptyMessage(0);
+                }).start();
+            } break;
+
+            case SevxConsts.FILM: {
+                handler.sendEmptyMessage(0);
+            } break;
+
+//            case SevxConsts.TV:{
+//                handler.sendEmptyMessage(0);
+//            } break;
+//
+//            case SevxConsts.SV:{
+//                handler.sendEmptyMessage(0);
+//            } break;
+
+            case SevxConsts.MUSIC:{
+                new Thread(() -> {
+                    musicBean = new HttpHelper().getMusicById(id);
+                    handler.sendEmptyMessage(0);
+                }).start();
+            }
+        }
+    }
+
+    /**
+     * 启动对应的详情 Fragment
+     */
+    private void startFragment() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        // Video
+        if (type.equals(SevxConsts.ANIMATION) || type.equals(SevxConsts.FILM) || type.equals(SevxConsts.TV) || type.equals(SevxConsts.SV)) {
+            DetailsVideoFragment detailsVideoFragment = new DetailsVideoFragment();
+            detailsVideoFragment.setArguments(this.getBundle());
+
+            fragmentTransaction.add(R.id.main_view, detailsVideoFragment);
+            fragmentTransaction.commit();
+        }
+        // Music
+        if (type.equals(SevxConsts.MUSIC)) {
+            DetailsMusicFragment detailsMusicFragment = new DetailsMusicFragment();
+            detailsMusicFragment.setArguments(this.getBundle());
+
+            fragmentTransaction.add(R.id.main_view, detailsMusicFragment);
+            fragmentTransaction.commit();
+
+        }
+        if (type.equals(SevxConsts.NOVEL) || type.equals(SevxConsts.COMIC)) {
+
+        }
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -125,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * 详情页编辑按钮逻辑
+     * 开启 EditActivity 并传递数据
      */
     private void editItem() {
         // 编辑按钮
@@ -159,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * 详情页删除按钮逻辑
+     * 根据不同的类型请求不同的删除接口
      */
     public void deleteItem(){
         switch (type){
@@ -200,24 +231,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void setBundleData(Bundle bundle){
+
+    private Bundle getBundle(){
+        Bundle bundle = new Bundle();
         bundle.putString(SevxConsts.TYPE, type);
         bundle.putString(SevxConsts.UNAME, uName);
         bundle.putString(SevxConsts.UPASSWORD, uPassword);
+
+        switch (type) {
+            case SevxConsts.ANIMATION:{
+                bundle.putSerializable(SevxConsts.ANIMATION_BEAN, animationBean);
+                return bundle;
+            }
+
+            case SevxConsts.MUSIC:{
+                bundle.putSerializable(SevxConsts.MUSIC_BEAN, musicBean);
+                return bundle;
+            }
+        }
+        return bundle;
     }
-    
+
+    /**
+     * 设置给 Activity 传递的数据
+     * @param intent Intent
+     */
     private void setIntentData(Intent intent){
         intent.putExtra(SevxConsts.FROM, SevxConsts.DETAILS);
         intent.putExtra(SevxConsts.TYPE, type);
         intent.putExtra(SevxConsts.UNAME, uName);
         intent.putExtra(SevxConsts.UPASSWORD, uPassword);
         intent.putExtra(SevxConsts.ID, id);
-    }
-
-    /**
-     * 定义给子组件调用
-     */
-    public VideoAnimationBean getAnimationBean() {
-        return animationBean;
     }
 }

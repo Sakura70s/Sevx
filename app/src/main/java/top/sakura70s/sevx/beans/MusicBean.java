@@ -1,6 +1,8 @@
 package top.sakura70s.sevx.beans;
 
-public class MusicBean {
+import java.io.Serializable;
+
+public class MusicBean implements Serializable {
 
     private Integer id;
     private String music_name;

@@ -207,6 +207,24 @@ public class HttpHelper {
     }
 
     /**
+     * 获取音乐详情
+     * @param id Music id
+     * @return MusicBean
+     */
+    public MusicBean getMusicById(Integer id){
+        Request request = requestHelper.getDetailsJson(SevxConsts.MUSIC_GET_ID, id);
+        try {
+            Response response = okHttpClient.newCall(request).execute();
+            if (response.code() == 200) {
+                ResponseBody responseBody = response.body();
+                return gson.fromJson(responseBody != null ? responseBody.string() : null, MusicBean.class);
+            } else return null;
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    /**
      * 获取小说
      * @param novelRequest Request
      * @param okHttpClient OkHttpClient

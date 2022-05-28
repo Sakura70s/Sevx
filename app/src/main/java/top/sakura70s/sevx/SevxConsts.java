@@ -85,7 +85,7 @@ public class SevxConsts {
     // Video_Sv Get of Id Url
 
     // Music Get of Id Url
-
+    public static final String MUSIC_GET_ID = "https://api.7os.top/Sevx/Music/";
     // Novel Get of Id Url
 
     // Comic Get of Id Url

@@ -79,65 +79,67 @@ public class SevxConsts {
     // Video_Animation Get of Id Url
     public static final String VIDEO_ANIMATION_GET_ID = "https://api.7os.top/Sevx/Animation/";
     // Video_Film Get of Id Url
-
+    public static final String VIDEO_FILM_GET_ID = "https://api.7os.top/Sevx/Film/";
     // Video_Tv Get of Id Url
-
+    public static final String VIDEO_TV_GET_ID = "https://api.7os.top/Sevx/Tv/";
     // Video_Sv Get of Id Url
-
+    public static final String VIDEO_SV_GET_ID = "https://api.7os.top/Sevx/Sv/";
     // Music Get of Id Url
     public static final String MUSIC_GET_ID = "https://api.7os.top/Sevx/Music/";
     // Novel Get of Id Url
     public static final String NOVEL_GET_ID = "https://api.7os.top/Sevx/Novel/";
     // Comic Get of Id Url
-
+    public static final String COMIC_GET_ID = "https://api.7os.top/Sevx/Comic/";
 
 
 
     // Video_Animation Get of Name Url
     public static final String VIDEO_ANIMATION_GET_NAME = "https://api.7os.top/Sevx/Animation/Search/";
     // Video_Film Get of Name Url
-
+    public static final String VIDEO_FILM_GET_NAME = "https://api.7os.top/Sevx/Film/Search/";
     // Video_Tv Get of Name Url
-
+    public static final String VIDEO_TV_GET_NAME = "https://api.7os.top/Sevx/Tv/Search/";
     // Video_Sv Get of Name Url
-
+    public static final String VIDEO_SV_GET_NAME = "https://api.7os.top/Sevx/Sv/Search/";
     // Music Get of Name Url
-
+    public static final String MUSIC_GET_NAME = "https://api.7os.top/Sevx/Music/Search/";
     // Novel Get of Name Url
-
+    public static final String NOVEL_GET_NAME = "https://api.7os.top/Sevx/Novel/Search/";
     // Comic Get of Name Url
-
+    public static final String COMIC_GET_NAME = "https://api.7os.top/Sevx/Comic/Search/";
 
 
 
     // Video_Animation Put Update Url
     public static final String VIDEO_ANIMATION_PUT_UPDATE = "https://api.7os.top/Sevx/Animation/Update/";
     // Video_Film Put Update Url
-
+    public static final String VIDEO_FILM_PUT_UPDATE = "https://api.7os.top/Sevx/Film/Update/";
     // Video_Tv Put Update Url
-
+    public static final String VIDEO_TV_PUT_UPDATE = "https://api.7os.top/Sevx/Tv/Update/";
     // Video_Sv Put Update Url
-
+    public static final String VIDEO_SV_PUT_UPDATE = "https://api.7os.top/Sevx/Sv/Update/";
     // Music Put Update Url
-
+    public static final String MUSIC_PUT_UPDATE = "https://api.7os.top/Sevx/Music/Update/";
     // Novel Put Update Url
-
+    public static final String NOVEL_PUT_UPDATE = "https://api.7os.top/Sevx/Novel/Update/";
     // Comic Put Update Url
-
+    public static final String COMIC_PUT_UPDATE = "https://api.7os.top/Sevx/Comic/Update/";
 
 
 
     // Video_Animation Delete Url
     public static final String VIDEO_ANIMATION_DELETE = "https://api.7os.top/Sevx/Animation/Delete/";
     // Video_Film Delete Url
-
+    public static final String VIDEO_FILM_DELETE = "https://api.7os.top/Sevx/Film/Delete/";
     // Video_Tv Delete Url
-
+    public static final String VIDEO_TV_DELETE = "https://api.7os.top/Sevx/Tv/Delete/";
     // Video_Sv Delete Url
-
+    public static final String VIDEO_SV_DELETE = "https://api.7os.top/Sevx/Sv/Delete/";
     // Music Delete Url
-
+    public static final String MUSIC_DELETE = "https://api.7os.top/Sevx/Music/Delete/";
     // Novel Delete Url
-
+    public static final String NOVEL_DELETE = "https://api.7os.top/Sevx/Novel/Delete/";
     // Comic Delete Url
+    public static final String COMIC_DELETE = "https://api.7os.top/Sevx/Comic/Delete/";
+
 }

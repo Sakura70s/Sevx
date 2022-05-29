@@ -18,7 +18,7 @@ import java.util.List;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.activitys.MainActivity;
-import top.sakura70s.sevx.beans.ComicBean;
+import top.sakura70s.sevx.beans.comic.ComicBean;
 
 public class ComicItemAdapter extends RecyclerView.Adapter<ComicItemAdapter.ComicItemHolder> {
     private List<ComicBean> list;

@@ -22,9 +22,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
-import top.sakura70s.sevx.beans.ComicBean;
+import top.sakura70s.sevx.beans.comic.ComicBean;
 import top.sakura70s.sevx.beans.music.MusicBean;
-import top.sakura70s.sevx.beans.NovelBean;
+import top.sakura70s.sevx.beans.novel.NovelBean;
 import top.sakura70s.sevx.beans.VideoFilmBean;
 import top.sakura70s.sevx.beans.VideoSvBean;
 import top.sakura70s.sevx.beans.VideoTvBean;
@@ -218,10 +218,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             } break;
             case SevxConsts.NOVEL:{
-                Toast.makeText(this, "Novel is TobeContinued", Toast.LENGTH_SHORT).show();
+                intent.putExtra(SevxConsts.NOVEL_BEAN, novelBean);
+                startActivity(intent);
             } break;
             case SevxConsts.COMIC:{
-                Toast.makeText(this, "Comic is TobeContinued", Toast.LENGTH_SHORT).show();
+                intent.putExtra(SevxConsts.COMIC_BEAN, comicBean);
+                startActivity(intent);
             }
         }
     }

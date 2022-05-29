@@ -125,6 +125,14 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (from.equals(SevxConsts.DETAILS)){
+            this.setData();
+        }
+    }
+
     private void setData(){
         switch (type){
             case SevxConsts.ANIMATION: {
@@ -154,13 +162,7 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
         }
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        if (from.equals(SevxConsts.DETAILS)){
-            this.setData();
-        }
-    }
+
 
     @Override
     public void onClick(View view) {

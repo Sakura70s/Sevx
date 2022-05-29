@@ -18,7 +18,7 @@ import java.util.List;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.activitys.MainActivity;
-import top.sakura70s.sevx.beans.NovelBean;
+import top.sakura70s.sevx.beans.novel.NovelBean;
 
 public class NovelItemAdapter extends RecyclerView.Adapter<NovelItemAdapter.NovelItemHolder> {
     private List<NovelBean> list;

@@ -11,7 +11,10 @@ import android.widget.Toast;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
+import top.sakura70s.sevx.beans.comic.ComicBean;
 import top.sakura70s.sevx.beans.music.MusicBean;
+import top.sakura70s.sevx.beans.novel.NovelBean;
+import top.sakura70s.sevx.fragments.BookEditFragment;
 import top.sakura70s.sevx.fragments.MusicEditFragment;
 import top.sakura70s.sevx.fragments.video.EditVideoFragment;
 
@@ -50,11 +53,13 @@ public class EditActivity extends AppCompatActivity {
 
     }
 
-    private void setBundleData(Bundle bundle) {
+    private Bundle getBundle() {
+        Bundle bundle = new Bundle();
         bundle.putString(SevxConsts.FROM, from);
         bundle.putString(SevxConsts.TYPE, type);
         bundle.putString(SevxConsts.UNAME, uName);
         bundle.putString(SevxConsts.UPASSWORD, uPassword);
+        return bundle;
     }
 
     private void openFragment(){
@@ -62,11 +67,8 @@ public class EditActivity extends AppCompatActivity {
         if (from.equals(SevxConsts.LIST)){
             // 影视类型
             if (type.equals(SevxConsts.ANIMATION) || type.equals(SevxConsts.FILM) || type.equals(SevxConsts.TV) || type.equals(SevxConsts.SV)){
-                Bundle bundle = new Bundle();
-                this.setBundleData(bundle);
-
                 EditVideoFragment editVideoFragment = new EditVideoFragment();
-                editVideoFragment.setArguments(bundle);
+                editVideoFragment.setArguments(this.getBundle());
 
                 fragmentTransaction.add(R.id.edit_view, editVideoFragment);
                 fragmentTransaction.commit();
@@ -74,11 +76,8 @@ public class EditActivity extends AppCompatActivity {
 
             // 音乐类型
             if (type.equals(SevxConsts.MUSIC)) {
-                Bundle bundle = new Bundle();
-                this.setBundleData(bundle);
-
                 MusicEditFragment musicEditFragment = new MusicEditFragment();
-                musicEditFragment.setArguments(bundle);
+                musicEditFragment.setArguments(this.getBundle());
 
                 fragmentTransaction.add(R.id.edit_view, musicEditFragment);
                 fragmentTransaction.commit();
@@ -86,7 +85,11 @@ public class EditActivity extends AppCompatActivity {
 
             // 书籍类型
             if (type.equals(SevxConsts.NOVEL) || type.equals(SevxConsts.COMIC)) {
+                BookEditFragment bookEditFragment = new BookEditFragment();
+                bookEditFragment.setArguments(this.getBundle());
 
+                fragmentTransaction.add(R.id.edit_view, bookEditFragment);
+                fragmentTransaction.commit();
             }
         }
 
@@ -100,11 +103,9 @@ public class EditActivity extends AppCompatActivity {
                     if (intent != null) {
                         // 获得传进来的数据
                         VideoAnimationBean animationBean = (VideoAnimationBean) intent.getSerializableExtra(SevxConsts.ANIMATION_BEAN);
-                        
-                        Bundle bundle = new Bundle();
-                        // 讲传进来的数据传递到 Fragment 里
+
+                        Bundle bundle = this.getBundle();
                         bundle.putSerializable(SevxConsts.ANIMATION_BEAN, animationBean);
-                        this.setBundleData(bundle);
 
                         // 实例化 Fragment
                         EditVideoFragment editVideoFragment = new EditVideoFragment();
@@ -115,12 +116,12 @@ public class EditActivity extends AppCompatActivity {
                         fragmentTransaction.commit();
                     }
                 } break;
+
                 case SevxConsts.MUSIC: {
                     if (intent != null){
                         MusicBean musicBean = (MusicBean) intent.getSerializableExtra(SevxConsts.MUSIC_BEAN);
 
-                        Bundle bundle = new Bundle();
-                        this.setBundleData(bundle);
+                        Bundle bundle = this.getBundle();
                         bundle.putSerializable(SevxConsts.MUSIC_BEAN, musicBean);
 
                         MusicEditFragment musicEditFragment = new MusicEditFragment();
@@ -130,6 +131,36 @@ public class EditActivity extends AppCompatActivity {
                         fragmentTransaction.commit();
                     }
                 } break;
+
+                case SevxConsts.NOVEL:{
+                    if (intent != null){
+                        NovelBean novelBean = (NovelBean) intent.getSerializableExtra(SevxConsts.NOVEL_BEAN);
+
+                        Bundle bundle = this.getBundle();
+                        bundle.putSerializable(SevxConsts.NOVEL_BEAN, novelBean);
+
+                        BookEditFragment bookEditFragment = new BookEditFragment();
+                        bookEditFragment.setArguments(bundle);
+
+                        fragmentTransaction.add(R.id.edit_view, bookEditFragment);
+                        fragmentTransaction.commit();
+                    }
+                } break;
+
+                case SevxConsts.COMIC:{
+                    if (intent != null){
+                        ComicBean comicBean = (ComicBean) intent.getSerializableExtra(SevxConsts.COMIC_BEAN);
+
+                        Bundle bundle = this.getBundle();
+                        bundle.putSerializable(SevxConsts.COMIC_BEAN, comicBean);
+
+                        BookEditFragment bookEditFragment = new BookEditFragment();
+                        bookEditFragment.setArguments(bundle);
+
+                        fragmentTransaction.add(R.id.edit_view, bookEditFragment);
+                        fragmentTransaction.commit();
+                    }
+                }
             }
         }
         // 有问题

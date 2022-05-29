@@ -18,8 +18,8 @@ import com.bumptech.glide.Glide;
 
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
-import top.sakura70s.sevx.beans.ComicBean;
-import top.sakura70s.sevx.beans.NovelBean;
+import top.sakura70s.sevx.beans.comic.ComicBean;
+import top.sakura70s.sevx.beans.novel.NovelBean;
 
 public class DetailsBookFragment extends Fragment {
     private Activity mainActivity;

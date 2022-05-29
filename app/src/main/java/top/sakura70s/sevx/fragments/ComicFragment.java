@@ -29,10 +29,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
+import top.sakura70s.sevx.activitys.EditActivity;
 import top.sakura70s.sevx.activitys.SearchActivity;
 import top.sakura70s.sevx.activitys.SevxActivity;
 import top.sakura70s.sevx.adapters.ComicItemAdapter;
-import top.sakura70s.sevx.beans.ComicBean;
+import top.sakura70s.sevx.beans.comic.ComicBean;
 import top.sakura70s.sevx.helpers.HttpHelper;
 import top.sakura70s.sevx.helpers.RequestHelper;
 
@@ -113,7 +114,9 @@ public class ComicFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         // Comic 添加按钮 逻辑
         if (view.getId() == R.id.float_button_comic_add){
-            Toast.makeText(getContext(), "正在路上。。。", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getActivity(), EditActivity.class);
+            this.setIntentData(intent);
+            startActivity(intent);
         }
         // Comic 搜索按钮 逻辑
         if (view.getId() == R.id.float_button_comic_search){

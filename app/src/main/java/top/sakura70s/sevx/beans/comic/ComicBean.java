@@ -1,15 +1,15 @@
-package top.sakura70s.sevx.beans;
+package top.sakura70s.sevx.beans.comic;
 
 import java.io.Serializable;
 
-public class NovelBean implements Serializable {
+public class ComicBean implements Serializable {
 
     private Integer id;
     private Boolean seriesflag;
     private Integer seriesid;
-    private String novel_name;
-    private String novel_year;
-    private String novel_status;
+    private String comic_name;
+    private String comic_year;
+    private String comic_status;
     private String logo;
     private String author;
     private Boolean localflag;
@@ -44,28 +44,28 @@ public class NovelBean implements Serializable {
         this.seriesid = seriesid;
     }
 
-    public String getNovel_name() {
-        return novel_name;
+    public String getComic_name() {
+        return comic_name;
     }
 
-    public void setNovel_name(String novel_name) {
-        this.novel_name = novel_name;
+    public void setComic_name(String comic_name) {
+        this.comic_name = comic_name;
     }
 
-    public String getNovel_year() {
-        return novel_year;
+    public String getComic_year() {
+        return comic_year;
     }
 
-    public void setNovel_year(String novel_year) {
-        this.novel_year = novel_year;
+    public void setComic_year(String comic_year) {
+        this.comic_year = comic_year;
     }
 
-    public String getNovel_status() {
-        return novel_status;
+    public String getComic_status() {
+        return comic_status;
     }
 
-    public void setNovel_status(String novel_status) {
-        this.novel_status = novel_status;
+    public void setComic_status(String comic_status) {
+        this.comic_status = comic_status;
     }
 
     public String getLogo() {

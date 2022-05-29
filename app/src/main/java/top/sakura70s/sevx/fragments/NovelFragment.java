@@ -18,7 +18,6 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
@@ -29,10 +28,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
+import top.sakura70s.sevx.activitys.EditActivity;
 import top.sakura70s.sevx.activitys.SearchActivity;
 import top.sakura70s.sevx.activitys.SevxActivity;
 import top.sakura70s.sevx.adapters.NovelItemAdapter;
-import top.sakura70s.sevx.beans.NovelBean;
+import top.sakura70s.sevx.beans.novel.NovelBean;
 import top.sakura70s.sevx.helpers.HttpHelper;
 import top.sakura70s.sevx.helpers.RequestHelper;
 
@@ -112,7 +112,9 @@ public class NovelFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         // Novel 添加按钮 逻辑
         if (view.getId() == R.id.float_button_novel_add){
-            Toast.makeText(getContext(), "正在路上。。。", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getActivity(), EditActivity.class);
+            this.setIntentData(intent);
+            startActivity(intent);
         }
         // Music 搜索按钮 逻辑
         if (view.getId() == R.id.float_button_novel_search){

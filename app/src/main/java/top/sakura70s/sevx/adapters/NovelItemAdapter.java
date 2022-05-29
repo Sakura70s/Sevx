@@ -57,7 +57,7 @@ public class NovelItemAdapter extends RecyclerView.Adapter<NovelItemAdapter.Nove
         this.list = list;
         this.uName = uName;
         this.uPassword = uPassword;
-        notifyItemChanged(list.size());
+        notifyItemChanged(list == null ? 0 : list.size());
     }
 
     public static class NovelItemHolder extends RecyclerView.ViewHolder {

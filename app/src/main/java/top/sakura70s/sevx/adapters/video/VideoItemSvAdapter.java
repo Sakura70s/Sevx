@@ -67,7 +67,7 @@ public class VideoItemSvAdapter extends RecyclerView.Adapter<VideoItemSvAdapter.
         this.list = list;
         this.uName = uName;
         this.uPassword = uPassword;
-        notifyItemChanged(list.size());
+        notifyItemChanged(list == null ? 0 : list.size());
     }
 
     // 设置具体 Item 的内容

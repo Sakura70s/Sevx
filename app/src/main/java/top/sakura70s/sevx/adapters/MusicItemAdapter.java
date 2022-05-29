@@ -57,7 +57,7 @@ public class MusicItemAdapter extends RecyclerView.Adapter<MusicItemAdapter.Musi
         this.list = list;
         this.uName = uName;
         this.uPassword = uPassword;
-        notifyItemChanged(list.size());
+        notifyItemChanged(list == null ? 0 : list.size());
     }
 
     public static class MusicItemHolder extends RecyclerView.ViewHolder {

@@ -123,10 +123,10 @@ public class VideoFilmFragment extends Fragment implements View.OnClickListener{
             Toast.makeText(getContext(), "正在路上。。。", Toast.LENGTH_SHORT).show();
         }
         // 电影 搜索按钮 逻辑
-        if (view.getId() == R.id.float_button_film_search){
-            Intent intent = new Intent(getActivity(), SearchActivity.class);
-            this.setIntentData(intent);
-            startActivity(intent);
+            if (view.getId() == R.id.float_button_film_search){
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                this.setIntentData(intent);
+                startActivity(intent);
         }
     }
 

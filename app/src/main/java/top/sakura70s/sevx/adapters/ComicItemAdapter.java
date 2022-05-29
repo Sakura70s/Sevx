@@ -57,7 +57,7 @@ public class ComicItemAdapter extends RecyclerView.Adapter<ComicItemAdapter.Comi
         this.list = list;
         this.uName = uName;
         this.uPassword = uPassword;
-        notifyItemChanged(list.size());
+        notifyItemChanged(list == null ? 0 : list.size());
     }
 
     public static class ComicItemHolder extends RecyclerView.ViewHolder {

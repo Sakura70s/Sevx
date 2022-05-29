@@ -25,12 +25,30 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
         android:textSize="20sp" />
+    <!--        年份-->
+    <TextView
+        android:id="@+id/details_video_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_video_title"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="12sp" />
     <!--        制作-->
     <TextView
         android:id="@+id/details_video_make"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/details_video_title"
+        android:layout_below="@id/details_video_year"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="12sp" />
+    <!--        短片类型-->
+    <TextView
+        android:id="@+id/details_video_sv_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_video_make"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
         android:textSize="12sp" />
@@ -39,7 +57,7 @@
         android:id="@+id/details_video_director"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/details_video_make"
+        android:layout_below="@id/details_video_sv_type"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
         android:textSize="12sp" />

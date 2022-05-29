@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
+import top.sakura70s.sevx.beans.ComicBean;
 import top.sakura70s.sevx.beans.NovelBean;
 
 public class DetailsBookFragment extends Fragment {
@@ -107,7 +108,20 @@ public class DetailsBookFragment extends Fragment {
             } break;
 
             case SevxConsts.COMIC:{
-                name.setText(type);
+                ComicBean comicBean = (ComicBean) bundle.getSerializable(SevxConsts.COMIC_BEAN);
+
+                // 适配页面
+                Glide.with(mainActivity).load(comicBean.getLogo()).into(logo);
+                name.setText(String.format("%s",comicBean.getComic_name()));
+                author.setText(String.format("作者：%s",comicBean.getAuthor()));
+                status.setText(String.format("连载状态：%s",comicBean.getComic_status()));
+                updateTime.setText(String.format("更新时间：%s",comicBean.getUpdatetime()));
+                series.setText(String.format("系列标志：%s",comicBean.getSeriesflag()));
+                localFlag.setText(String.format("本地标志：%s",comicBean.getLocalflag()));
+                remoteFlag.setText(String.format("远程标志：%s",comicBean.getRemoteflag()));
+                localUrl.setText(String.format("本地地址：%s",comicBean.getLocalurl()));
+                remoteUrl.setText(String.format("远程地址：%s",comicBean.getRemoteurl()));
+                remark.setText(String.format("备注：%s",comicBean.getRemark()));
             }
         }
     }

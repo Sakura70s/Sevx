@@ -18,6 +18,9 @@ import com.bumptech.glide.Glide;
 
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
+import top.sakura70s.sevx.beans.VideoFilmBean;
+import top.sakura70s.sevx.beans.VideoSvBean;
+import top.sakura70s.sevx.beans.VideoTvBean;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
 
 public class DetailsVideoFragment extends Fragment {
@@ -44,6 +47,8 @@ public class DetailsVideoFragment extends Fragment {
     private TextView lastUpdate;
     private TextView remark;
     private ImageView mediaInfo;
+    private TextView svType;
+    private TextView year;
 
     // 传入的数据
     private Bundle bundle;
@@ -98,6 +103,9 @@ public class DetailsVideoFragment extends Fragment {
         lastUpdate = mainActivity.findViewById(R.id.details_video_last_update);
         remark = mainActivity.findViewById(R.id.details_video_remark);
         mediaInfo = mainActivity.findViewById(R.id.details_video_mediaInfo);
+        svType = mainActivity.findViewById(R.id.details_video_sv_type);
+        year = mainActivity.findViewById(R.id.details_video_year);
+
     }
 
     private void setData(){
@@ -109,9 +117,9 @@ public class DetailsVideoFragment extends Fragment {
                 // 适配页面
                 Glide.with(mainActivity).load(animationBean.getLogo()).into(mediaInfo);
                 title.setText(String.format("名称：%s", animationBean.getAnimation_name()));
-                make.setText(String.format("制作：%s", animationBean.getMake()));
-                director.setText(String.format("导演：%s", animationBean.getDirector()));
-                screenWriter.setText(String.format("编辑：%s", animationBean.getScreenwriter()));
+                make.setText(String.format("动画制作：%s", animationBean.getMake()));
+                director.setText(String.format("监督：%s", animationBean.getDirector()));
+                screenWriter.setText(String.format("系列构成：%s", animationBean.getScreenwriter()));
                 series.setText(String.format("系列：%s", animationBean.getSeriesflag()));
                 amount.setText(String.format("集数：%s", animationBean.getAmount()));
                 container.setText(String.format("容器格式：%s", animationBean.getContainer()));
@@ -126,18 +134,90 @@ public class DetailsVideoFragment extends Fragment {
                 lastWatch.setText(String.format("最后观看时间：%s", animationBean.getLastwatch()));
                 lastUpdate.setText(String.format("最后更新时间：%s", animationBean.getUpdatetime()));
                 remark.setText(String.format("备注：%s", animationBean.getRemark()));
+                svType.setVisibility(View.GONE);
+                year.setText(String.format("年份：%s", animationBean.getAnimation_year()));
             } break;
 
             case SevxConsts.FILM:{
-                title.setText(type);
+                VideoFilmBean filmBean = (VideoFilmBean) bundle.getSerializable(SevxConsts.FILM_BEAN);
+
+                // 适配页面
+                Glide.with(mainActivity).load(filmBean.getLogo()).into(mediaInfo);
+                title.setText(String.format("名称：%s", filmBean.getFilm_name()));
+                make.setText(String.format("出品方：%s", filmBean.getMake()));
+                director.setText(String.format("导演：%s", filmBean.getDirector()));
+                screenWriter.setText(String.format("编剧：%s", filmBean.getScreenwriter()));
+                series.setText(String.format("系列：%s", filmBean.getSeriesflag()));
+                amount.setVisibility(View.GONE);
+                container.setText(String.format("容器格式：%s", filmBean.getContainer()));
+                codeV.setText(String.format("视频编码：%s", filmBean.getCodev()));
+                codeA.setText(String.format("音频编码: %s", filmBean.getCodea()));
+                localFlag.setText(String.format("是否本地：%s", filmBean.getLocalflag()));
+                remoteFlag.setText(String.format("是否远程：%s", filmBean.getRemoteflag()));
+                localUrl.setText(String.format("本地地址：%s", filmBean.getLocalurl()));
+                remoteUrl.setText(String.format("远程地址：%s", filmBean.getRemoteurl()));
+                subType.setText(String.format("字幕类型：%s", filmBean.getSubtype()));
+                subTeam.setText(String.format("字幕组：%s", filmBean.getSubteam()));
+                lastWatch.setText(String.format("最后观看时间：%s", filmBean.getLastwatch()));
+                lastUpdate.setText(String.format("最后更新时间：%s", filmBean.getUpdatetime()));
+                remark.setText(String.format("备注：%s", filmBean.getRemark()));
+                svType.setVisibility(View.GONE);
+                year.setText(String.format("年份：%s", filmBean.getFilm_year()));
             } break;
 
             case SevxConsts.TV:{
-                title.setText(type);
+                VideoTvBean tvBean = (VideoTvBean) bundle.getSerializable(SevxConsts.TV_BEAN);
+
+                // 适配页面
+                Glide.with(mainActivity).load(tvBean.getLogo()).into(mediaInfo);
+                title.setText(String.format("名称：%s", tvBean.getTv_name()));
+                make.setText(String.format("出品方：%s", tvBean.getMake()));
+                director.setText(String.format("导演：%s", tvBean.getDirector()));
+                screenWriter.setText(String.format("编剧：%s", tvBean.getScreenwriter()));
+                series.setText(String.format("系列：%s", tvBean.getSeriesflag()));
+                amount.setText(String.format("集数：%s", tvBean.getAmount()));
+                container.setText(String.format("容器格式：%s", tvBean.getContainer()));
+                codeV.setText(String.format("视频编码：%s", tvBean.getCodev()));
+                codeA.setText(String.format("音频编码: %s", tvBean.getCodea()));
+                localFlag.setText(String.format("是否本地：%s", tvBean.getLocalflag()));
+                remoteFlag.setText(String.format("是否远程：%s", tvBean.getRemoteflag()));
+                localUrl.setText(String.format("本地地址：%s", tvBean.getLocalurl()));
+                remoteUrl.setText(String.format("远程地址：%s", tvBean.getRemoteurl()));
+                subType.setText(String.format("字幕类型：%s", tvBean.getSubtype()));
+                subTeam.setText(String.format("字幕组：%s", tvBean.getSubteam()));
+                lastWatch.setText(String.format("最后观看时间：%s", tvBean.getLastwatch()));
+                lastUpdate.setText(String.format("最后更新时间：%s", tvBean.getUpdatetime()));
+                remark.setText(String.format("备注：%s", tvBean.getRemark()));
+                svType.setVisibility(View.GONE);
+                year.setText(String.format("年份：%s", tvBean.getTv_year()));
+
             } break;
 
             case SevxConsts.SV:{
-                title.setText(type);
+                VideoSvBean svBean = (VideoSvBean) bundle.getSerializable(SevxConsts.SV_BEAN);
+
+                // 适配页面
+                Glide.with(mainActivity).load(svBean.getLogo()).into(mediaInfo);
+                title.setText(String.format("名称：%s", svBean.getSv_name()));
+                make.setText(String.format("作者：%s", svBean.getAuthor()));
+                director.setVisibility(View.GONE);
+                screenWriter.setVisibility(View.GONE);
+                series.setVisibility(View.GONE);
+                amount.setVisibility(View.GONE);
+                container.setText(String.format("容器格式：%s", svBean.getContainer()));
+                codeV.setText(String.format("视频编码：%s", svBean.getCodev()));
+                codeA.setText(String.format("音频编码: %s", svBean.getCodea()));
+                localFlag.setText(String.format("是否本地：%s", svBean.getLocalflag()));
+                remoteFlag.setText(String.format("是否远程：%s", svBean.getRemoteflag()));
+                localUrl.setText(String.format("本地地址：%s", svBean.getLocalurl()));
+                remoteUrl.setText(String.format("远程地址：%s", svBean.getRemoteurl()));
+                subType.setVisibility(View.GONE);
+                subTeam.setVisibility(View.GONE);
+                lastWatch.setVisibility(View.GONE);
+                lastUpdate.setText(String.format("最后更新时间：%s", svBean.getUpdatetime()));
+                remark.setText(String.format("备注：%s", svBean.getRemark()));
+                svType.setVisibility(View.GONE);
+                year.setText(String.format("年份：%s", svBean.getSv_year()));
             } break;
         }
     }

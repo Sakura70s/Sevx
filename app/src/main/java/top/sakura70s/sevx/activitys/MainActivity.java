@@ -95,15 +95,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } break;
 
             case SevxConsts.FILM: {
-                handler.sendEmptyMessage(0);
+                new Thread(() -> {
+                    filmBean = new HttpHelper().getFilmById(id);
+                    handler.sendEmptyMessage(0);
+                }).start();
             } break;
 
             case SevxConsts.TV:{
-                handler.sendEmptyMessage(0);
+                new Thread(() -> {
+                    tvBean = new HttpHelper().getTvById(id);
+                    handler.sendEmptyMessage(0);
+                }).start();
             } break;
 
             case SevxConsts.SV:{
-                handler.sendEmptyMessage(0);
+                new Thread(() -> {
+                    svBean = new HttpHelper().getSvById(id);
+                    handler.sendEmptyMessage(0);
+                }).start();
             } break;
 
             case SevxConsts.MUSIC:{
@@ -121,8 +130,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } break;
 
             case SevxConsts.COMIC:{
-                handler.sendEmptyMessage(0);
-            }
+                new Thread(() -> {
+                    comicBean = new HttpHelper().getComicById(id);
+                    handler.sendEmptyMessage(0);
+                }).start();
+            } break;
         }
     }
 
@@ -148,6 +160,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             fragmentTransaction.commit();
 
         }
+        // Book
         if (type.equals(SevxConsts.NOVEL) || type.equals(SevxConsts.COMIC)) {
             DetailsBookFragment detailsBookFragment = new DetailsBookFragment();
             detailsBookFragment.setArguments(this.getBundle());
@@ -253,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } break;
             case SevxConsts.COMIC:{
                 Toast.makeText(this, "Comic is TobeContinued", Toast.LENGTH_SHORT).show();
-            }
+            } break;
         }
     }
 
@@ -281,6 +294,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case SevxConsts.NOVEL:{
                 bundle.putSerializable(SevxConsts.NOVEL_BEAN, novelBean);
+                return bundle;
+            }
+
+            case SevxConsts.FILM:{
+                bundle.putSerializable(SevxConsts.FILM_BEAN, filmBean);
+                return bundle;
+            }
+
+            case SevxConsts.TV:{
+                bundle.putSerializable(SevxConsts.TV_BEAN, tvBean);
+                return bundle;
+            }
+
+            case SevxConsts.SV:{
+                bundle.putSerializable(SevxConsts.SV_BEAN, svBean);
+                return bundle;
+            }
+
+            case SevxConsts.COMIC:{
+                bundle.putSerializable(SevxConsts.COMIC_BEAN, comicBean);
                 return bundle;
             }
         }

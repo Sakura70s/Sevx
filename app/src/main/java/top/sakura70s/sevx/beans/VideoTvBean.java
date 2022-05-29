@@ -1,6 +1,8 @@
 package top.sakura70s.sevx.beans;
 
-public class VideoTvBean {
+import java.io.Serializable;
+
+public class VideoTvBean implements Serializable {
 
     private Integer id;
     private Boolean seriesflag;

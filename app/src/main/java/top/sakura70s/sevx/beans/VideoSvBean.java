@@ -1,6 +1,8 @@
 package top.sakura70s.sevx.beans;
 
-public class VideoSvBean {
+import java.io.Serializable;
+
+public class VideoSvBean implements Serializable {
 
     private Integer id;
     private String sv_name;

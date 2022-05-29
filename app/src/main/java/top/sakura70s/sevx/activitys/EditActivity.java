@@ -12,8 +12,11 @@ import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
 import top.sakura70s.sevx.beans.comic.ComicBean;
+import top.sakura70s.sevx.beans.film.VideoFilmBean;
 import top.sakura70s.sevx.beans.music.MusicBean;
 import top.sakura70s.sevx.beans.novel.NovelBean;
+import top.sakura70s.sevx.beans.sv.VideoSvBean;
+import top.sakura70s.sevx.beans.tv.VideoTvBean;
 import top.sakura70s.sevx.fragments.BookEditFragment;
 import top.sakura70s.sevx.fragments.MusicEditFragment;
 import top.sakura70s.sevx.fragments.video.EditVideoFragment;
@@ -158,6 +161,60 @@ public class EditActivity extends AppCompatActivity {
                         bookEditFragment.setArguments(bundle);
 
                         fragmentTransaction.add(R.id.edit_view, bookEditFragment);
+                        fragmentTransaction.commit();
+                    }
+                }
+
+                case SevxConsts.FILM:{
+                    if (intent != null) {
+                        // 获得传进来的数据
+                        VideoFilmBean filmBean = (VideoFilmBean) intent.getSerializableExtra(SevxConsts.FILM_BEAN);
+
+                        Bundle bundle = this.getBundle();
+                        bundle.putSerializable(SevxConsts.FILM_BEAN, filmBean);
+
+                        // 实例化 Fragment
+                        EditVideoFragment editVideoFragment = new EditVideoFragment();
+                        editVideoFragment.setArguments(bundle);
+
+                        // 启动 Fragment
+                        fragmentTransaction.add(R.id.edit_view, editVideoFragment);
+                        fragmentTransaction.commit();
+                    }
+                } break;
+
+                case SevxConsts.TV:{
+                    if (intent != null) {
+                        // 获得传进来的数据
+                        VideoTvBean tvBean = (VideoTvBean) intent.getSerializableExtra(SevxConsts.TV_BEAN);
+
+                        Bundle bundle = this.getBundle();
+                        bundle.putSerializable(SevxConsts.TV_BEAN, tvBean);
+
+                        // 实例化 Fragment
+                        EditVideoFragment editVideoFragment = new EditVideoFragment();
+                        editVideoFragment.setArguments(bundle);
+
+                        // 启动 Fragment
+                        fragmentTransaction.add(R.id.edit_view, editVideoFragment);
+                        fragmentTransaction.commit();
+                    }
+                } break;
+
+                case SevxConsts.SV:{
+                    if (intent != null) {
+                        // 获得传进来的数据
+                        VideoSvBean svBean = (VideoSvBean) intent.getSerializableExtra(SevxConsts.SV_BEAN);
+
+                        Bundle bundle = this.getBundle();
+                        bundle.putSerializable(SevxConsts.SV_BEAN, svBean);
+
+                        // 实例化 Fragment
+                        EditVideoFragment editVideoFragment = new EditVideoFragment();
+                        editVideoFragment.setArguments(bundle);
+
+                        // 启动 Fragment
+                        fragmentTransaction.add(R.id.edit_view, editVideoFragment);
                         fragmentTransaction.commit();
                     }
                 }

@@ -18,7 +18,7 @@ import java.util.List;
 import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.activitys.MainActivity;
 import top.sakura70s.sevx.R;
-import top.sakura70s.sevx.beans.VideoFilmBean;
+import top.sakura70s.sevx.beans.film.VideoFilmBean;
 
 public class VideoItemFilmAdapter extends RecyclerView.Adapter<VideoItemFilmAdapter.VideoItemFilmHolder> {
     // 定义 传进来的 集合

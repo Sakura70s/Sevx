@@ -18,9 +18,9 @@ import com.bumptech.glide.Glide;
 
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
-import top.sakura70s.sevx.beans.VideoFilmBean;
-import top.sakura70s.sevx.beans.VideoSvBean;
-import top.sakura70s.sevx.beans.VideoTvBean;
+import top.sakura70s.sevx.beans.film.VideoFilmBean;
+import top.sakura70s.sevx.beans.sv.VideoSvBean;
+import top.sakura70s.sevx.beans.tv.VideoTvBean;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
 
 public class DetailsVideoFragment extends Fragment {

@@ -1,8 +1,6 @@
-package top.sakura70s.sevx.beans;
+package top.sakura70s.sevx.beans.tv;
 
-import java.io.Serializable;
-
-public class VideoTvBean implements Serializable {
+public class TvUpdateBean {
 
     private Integer id;
     private Boolean seriesflag;
@@ -26,6 +24,8 @@ public class VideoTvBean implements Serializable {
     private String lastwatch;
     private String updatetime;
     private String remark;
+    private String uname;
+    private String upassword;
 
     public Integer getId() {
         return id;
@@ -201,5 +201,21 @@ public class VideoTvBean implements Serializable {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public String getUpassword() {
+        return upassword;
+    }
+
+    public void setUpassword(String upassword) {
+        this.upassword = upassword;
     }
 }

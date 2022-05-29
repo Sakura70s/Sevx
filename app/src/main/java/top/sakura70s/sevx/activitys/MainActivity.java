@@ -25,9 +25,9 @@ import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.beans.comic.ComicBean;
 import top.sakura70s.sevx.beans.music.MusicBean;
 import top.sakura70s.sevx.beans.novel.NovelBean;
-import top.sakura70s.sevx.beans.VideoFilmBean;
-import top.sakura70s.sevx.beans.VideoSvBean;
-import top.sakura70s.sevx.beans.VideoTvBean;
+import top.sakura70s.sevx.beans.film.VideoFilmBean;
+import top.sakura70s.sevx.beans.sv.VideoSvBean;
+import top.sakura70s.sevx.beans.tv.VideoTvBean;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
 import top.sakura70s.sevx.fragments.DetailsBookFragment;
 import top.sakura70s.sevx.fragments.DetailsMusicFragment;
@@ -205,13 +205,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             } break;
             case SevxConsts.FILM:{
-                Toast.makeText(this, "Film is TobeContinued", Toast.LENGTH_SHORT).show();
+                intent.putExtra(SevxConsts.FILM_BEAN, filmBean);
+                startActivity(intent);
             } break;
             case SevxConsts.TV:{
-                Toast.makeText(this, "Tv is TobeContinued", Toast.LENGTH_SHORT).show();
+                intent.putExtra(SevxConsts.TV_BEAN, tvBean);
+                startActivity(intent);
             } break;
             case SevxConsts.SV:{
-                Toast.makeText(this, "Sv is TobeContinued", Toast.LENGTH_SHORT).show();
+                intent.putExtra(SevxConsts.SV_BEAN, svBean);
+                startActivity(intent);
             } break;
             case SevxConsts.MUSIC:{
                 intent.putExtra(SevxConsts.MUSIC_BEAN, musicBean);

@@ -31,6 +31,8 @@
     <string name="flagEdit">True of False</string>
     <string name="seriesId">系列ID</string>
     <string name="seriesIdEdit">输入系列所属ID</string>
+    <string name="svType">短片类型</string>
+    <string name="svTypeEdit">输入短片类型</string>
     <string name="editName">名称</string>
     <string name="editNameEdit">输入名称</string>
     <string name="editYear">年份</string>

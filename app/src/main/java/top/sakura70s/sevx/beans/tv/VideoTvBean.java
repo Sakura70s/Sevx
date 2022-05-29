@@ -1,15 +1,19 @@
-package top.sakura70s.sevx.beans;
+package top.sakura70s.sevx.beans.tv;
 
 import java.io.Serializable;
 
-public class VideoSvBean implements Serializable {
+public class VideoTvBean implements Serializable {
 
     private Integer id;
-    private String sv_name;
-    private String sv_year;
-    private String sv_type;
+    private Boolean seriesflag;
+    private Integer seriesid;
+    private String tv_name;
+    private String tv_year;
+    private String director;
+    private String screenwriter;
+    private String make;
     private String logo;
-    private String author;
+    private Integer amount;
     private Boolean localflag;
     private String localurl;
     private Boolean remoteflag;
@@ -17,6 +21,9 @@ public class VideoSvBean implements Serializable {
     private String container;
     private String codev;
     private String codea;
+    private String subtype;
+    private String subteam;
+    private String lastwatch;
     private String updatetime;
     private String remark;
 
@@ -28,28 +35,60 @@ public class VideoSvBean implements Serializable {
         this.id = id;
     }
 
-    public String getSv_name() {
-        return sv_name;
+    public Boolean getSeriesflag() {
+        return seriesflag;
     }
 
-    public void setSv_name(String sv_name) {
-        this.sv_name = sv_name;
+    public void setSeriesflag(Boolean seriesflag) {
+        this.seriesflag = seriesflag;
     }
 
-    public String getSv_year() {
-        return sv_year;
+    public Integer getSeriesid() {
+        return seriesid;
     }
 
-    public void setSv_year(String sv_year) {
-        this.sv_year = sv_year;
+    public void setSeriesid(Integer seriesid) {
+        this.seriesid = seriesid;
     }
 
-    public String getSv_type() {
-        return sv_type;
+    public String getTv_name() {
+        return tv_name;
     }
 
-    public void setSv_type(String sv_type) {
-        this.sv_type = sv_type;
+    public void setTv_name(String tv_name) {
+        this.tv_name = tv_name;
+    }
+
+    public String getTv_year() {
+        return tv_year;
+    }
+
+    public void setTv_year(String tv_year) {
+        this.tv_year = tv_year;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public String getScreenwriter() {
+        return screenwriter;
+    }
+
+    public void setScreenwriter(String screenwriter) {
+        this.screenwriter = screenwriter;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
     }
 
     public String getLogo() {
@@ -60,12 +99,12 @@ public class VideoSvBean implements Serializable {
         this.logo = logo;
     }
 
-    public String getAuthor() {
-        return author;
+    public Integer getAmount() {
+        return amount;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     public Boolean getLocalflag() {
@@ -122,6 +161,30 @@ public class VideoSvBean implements Serializable {
 
     public void setCodea(String codea) {
         this.codea = codea;
+    }
+
+    public String getSubtype() {
+        return subtype;
+    }
+
+    public void setSubtype(String subtype) {
+        this.subtype = subtype;
+    }
+
+    public String getSubteam() {
+        return subteam;
+    }
+
+    public void setSubteam(String subteam) {
+        this.subteam = subteam;
+    }
+
+    public String getLastwatch() {
+        return lastwatch;
+    }
+
+    public void setLastwatch(String lastwatch) {
+        this.lastwatch = lastwatch;
     }
 
     public String getUpdatetime() {

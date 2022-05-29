@@ -30,9 +30,9 @@ import top.sakura70s.sevx.adapters.video.VideoItemTvAdapter;
 import top.sakura70s.sevx.beans.comic.ComicBean;
 import top.sakura70s.sevx.beans.music.MusicBean;
 import top.sakura70s.sevx.beans.novel.NovelBean;
-import top.sakura70s.sevx.beans.VideoFilmBean;
-import top.sakura70s.sevx.beans.VideoSvBean;
-import top.sakura70s.sevx.beans.VideoTvBean;
+import top.sakura70s.sevx.beans.film.VideoFilmBean;
+import top.sakura70s.sevx.beans.sv.VideoSvBean;
+import top.sakura70s.sevx.beans.tv.VideoTvBean;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
 import top.sakura70s.sevx.helpers.HttpHelper;
 

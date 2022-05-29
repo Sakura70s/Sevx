@@ -1,18 +1,15 @@
-package top.sakura70s.sevx.beans;
+package top.sakura70s.sevx.beans.sv;
 
 import java.io.Serializable;
 
-public class VideoFilmBean implements Serializable {
+public class VideoSvBean implements Serializable {
 
     private Integer id;
-    private Boolean seriesflag;
-    private Integer seriesid;
-    private String film_name;
-    private String film_year;
-    private String director;
-    private String screenwriter;
-    private String make;
+    private String sv_name;
+    private String sv_year;
+    private String sv_type;
     private String logo;
+    private String author;
     private Boolean localflag;
     private String localurl;
     private Boolean remoteflag;
@@ -20,9 +17,6 @@ public class VideoFilmBean implements Serializable {
     private String container;
     private String codev;
     private String codea;
-    private String subtype;
-    private String subteam;
-    private String lastwatch;
     private String updatetime;
     private String remark;
 
@@ -34,60 +28,28 @@ public class VideoFilmBean implements Serializable {
         this.id = id;
     }
 
-    public Boolean getSeriesflag() {
-        return seriesflag;
+    public String getSv_name() {
+        return sv_name;
     }
 
-    public void setSeriesflag(Boolean seriesflag) {
-        this.seriesflag = seriesflag;
+    public void setSv_name(String sv_name) {
+        this.sv_name = sv_name;
     }
 
-    public Integer getSeriesid() {
-        return seriesid;
+    public String getSv_year() {
+        return sv_year;
     }
 
-    public void setSeriesid(Integer seriesid) {
-        this.seriesid = seriesid;
+    public void setSv_year(String sv_year) {
+        this.sv_year = sv_year;
     }
 
-    public String getFilm_name() {
-        return film_name;
+    public String getSv_type() {
+        return sv_type;
     }
 
-    public void setFilm_name(String film_name) {
-        this.film_name = film_name;
-    }
-
-    public String getFilm_year() {
-        return film_year;
-    }
-
-    public void setFilm_year(String film_year) {
-        this.film_year = film_year;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public String getScreenwriter() {
-        return screenwriter;
-    }
-
-    public void setScreenwriter(String screenwriter) {
-        this.screenwriter = screenwriter;
-    }
-
-    public String getMake() {
-        return make;
-    }
-
-    public void setMake(String make) {
-        this.make = make;
+    public void setSv_type(String sv_type) {
+        this.sv_type = sv_type;
     }
 
     public String getLogo() {
@@ -96,6 +58,14 @@ public class VideoFilmBean implements Serializable {
 
     public void setLogo(String logo) {
         this.logo = logo;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public Boolean getLocalflag() {
@@ -152,30 +122,6 @@ public class VideoFilmBean implements Serializable {
 
     public void setCodea(String codea) {
         this.codea = codea;
-    }
-
-    public String getSubtype() {
-        return subtype;
-    }
-
-    public void setSubtype(String subtype) {
-        this.subtype = subtype;
-    }
-
-    public String getSubteam() {
-        return subteam;
-    }
-
-    public void setSubteam(String subteam) {
-        this.subteam = subteam;
-    }
-
-    public String getLastwatch() {
-        return lastwatch;
-    }
-
-    public void setLastwatch(String lastwatch) {
-        this.lastwatch = lastwatch;
     }
 
     public String getUpdatetime() {

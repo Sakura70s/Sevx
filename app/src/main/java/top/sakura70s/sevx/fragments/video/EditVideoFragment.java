@@ -12,14 +12,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
+import top.sakura70s.sevx.beans.film.VideoFilmBean;
 import top.sakura70s.sevx.beans.animation.AnimationAddBean;
 import top.sakura70s.sevx.beans.animation.AnimationUpdateBean;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
+import top.sakura70s.sevx.beans.sv.VideoSvBean;
+import top.sakura70s.sevx.beans.tv.VideoTvBean;
 import top.sakura70s.sevx.helpers.HttpHelper;
 
 public class EditVideoFragment extends Fragment implements View.OnClickListener {
@@ -34,14 +38,19 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
     private Bundle bundle;
 
     private EditText seriesFlagEdit;
+    private LinearLayout seriesFlagLayout;
     private EditText seriesIdEdit;
+    private LinearLayout seriesIdLayout;
     private EditText nameEdit;
     private EditText yearEdit;
     private EditText directorEdit;
+    private LinearLayout directorLayout;
     private EditText screenWriterEdit;
+    private LinearLayout screenWriterLayout;
     private EditText makeEdit;
     private EditText logoEdit;
     private EditText amountEdit;
+    private LinearLayout amountLayout;
     private EditText localFlagEdit;
     private EditText localUrlEdit;
     private EditText remoteFlagEdit;
@@ -50,9 +59,14 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
     private EditText codeVEdit;
     private EditText codeAEdit;
     private EditText subTypeEdit;
+    private LinearLayout subTypeLayout;
     private EditText subTeamEdit;
+    private LinearLayout subTeamLayout;
     private EditText lastWatchEdit;
+    private LinearLayout lastWatchLayout;
     private EditText remarkEdit;
+    private EditText svType;
+    private LinearLayout svTypeLayout;
 
 
     public EditVideoFragment() {
@@ -101,14 +115,19 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
     private void initView(){
         // 初始化控件
         seriesFlagEdit = editActivity.findViewById(R.id.editPage_video_seriesFlag_edit);
+        seriesFlagLayout = editActivity.findViewById(R.id.editPage_video_seriesFlag);
         seriesIdEdit = editActivity.findViewById(R.id.editPage_video_seriesId_edit);
+        seriesIdLayout = editActivity.findViewById(R.id.editPage_video_seriesId);
         nameEdit = editActivity.findViewById(R.id.editPage_video_name_edit);
         yearEdit = editActivity.findViewById(R.id.editPage_video_year_edit);
         directorEdit = editActivity.findViewById(R.id.editPage_video_director_edit);
+        directorLayout = editActivity.findViewById(R.id.editPage_video_director);
         screenWriterEdit = editActivity.findViewById(R.id.editPage_video_screenWriter_edit);
+        screenWriterLayout = editActivity.findViewById(R.id.editPage_video_screenWriter);
         makeEdit = editActivity.findViewById(R.id.editPage_video_make_edit);
         logoEdit = editActivity.findViewById(R.id.editPage_video_logo_edit);
         amountEdit = editActivity.findViewById(R.id.editPage_video_amount_edit);
+        amountLayout = editActivity.findViewById(R.id.editPage_video_amount);
         localFlagEdit = editActivity.findViewById(R.id.editPage_video_localFlag_edit);
         localUrlEdit = editActivity.findViewById(R.id.editPage_video_localUrl_edit);
         remoteFlagEdit = editActivity.findViewById(R.id.editPage_video_remoteFlag_edit);
@@ -117,9 +136,14 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
         codeVEdit = editActivity.findViewById(R.id.editPage_video_codeV_edit);
         codeAEdit = editActivity.findViewById(R.id.editPage_video_codeA_edit);
         subTypeEdit = editActivity.findViewById(R.id.editPage_video_subType_edit);
+        subTypeLayout = editActivity.findViewById(R.id.editPage_video_subType);
         subTeamEdit = editActivity.findViewById(R.id.editPage_video_subTeam_edit);
+        subTeamLayout = editActivity.findViewById(R.id.editPage_video_subTeam);
         lastWatchEdit = editActivity.findViewById(R.id.editPage_video_lastWatch_edit);
+        lastWatchLayout = editActivity.findViewById(R.id.editPage_video_lastWatch);
         remarkEdit = editActivity.findViewById(R.id.editPage_video_remark_edit);
+        svType = editActivity.findViewById(R.id.editPage_video_svType_edit);
+        svTypeLayout = editActivity.findViewById(R.id.editPage_video_svType);
         FloatingActionButton completeButton = editActivity.findViewById(R.id.float_button_editPage_video_complete);
         completeButton.setOnClickListener(this);
 
@@ -137,6 +161,7 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
         switch (type){
             case SevxConsts.ANIMATION: {
                 VideoAnimationBean animationBean = (VideoAnimationBean) bundle.getSerializable(SevxConsts.ANIMATION_BEAN);
+                
                 this.id = animationBean.getId();
                 this.seriesFlagEdit.setText(animationBean.getSeriesflag().toString());
                 this.seriesIdEdit.setText(String.valueOf(animationBean.getSeriesid()));
@@ -158,7 +183,89 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
                 this.subTeamEdit.setText(String.valueOf(animationBean.getSubteam()));
                 this.lastWatchEdit.setText(String.valueOf(animationBean.getLastwatch()));
                 this.remarkEdit.setText(String.valueOf(animationBean.getRemark()));
-            }
+                this.svTypeLayout.setVisibility(View.GONE);
+            } break;
+
+            case SevxConsts.FILM:{
+                VideoFilmBean filmBean = (VideoFilmBean) bundle.getSerializable(SevxConsts.FILM_BEAN);
+
+                this.id = filmBean.getId();
+                this.seriesFlagEdit.setText(filmBean.getSeriesflag().toString());
+                this.seriesIdEdit.setText(String.valueOf(filmBean.getSeriesid()));
+                this.nameEdit.setText(String.valueOf(filmBean.getFilm_name()));
+                this.yearEdit.setText(String.valueOf(filmBean.getFilm_year()));
+                this.directorEdit.setText(String.valueOf(filmBean.getDirector()));
+                this.screenWriterEdit.setText(String.valueOf(filmBean.getScreenwriter()));
+                this.makeEdit.setText(String.valueOf(filmBean.getMake()));
+                this.logoEdit.setText(String.valueOf(filmBean.getLogo()));
+                this.amountLayout.setVisibility(View.GONE);
+                this.localFlagEdit.setText(String.valueOf(filmBean.getLocalflag()));
+                this.localUrlEdit.setText(String.valueOf(filmBean.getLocalurl()));
+                this.remoteFlagEdit.setText(String.valueOf(filmBean.getRemoteflag()));
+                this.remoteUrlEdit.setText(String.valueOf(filmBean.getRemoteurl()));
+                this.containerEdit.setText(String.valueOf(filmBean.getContainer()));
+                this.codeVEdit.setText(String.valueOf(filmBean.getCodev()));
+                this.codeAEdit.setText(String.valueOf(filmBean.getCodea()));
+                this.subTypeEdit.setText(String.valueOf(filmBean.getSubtype()));
+                this.subTeamEdit.setText(String.valueOf(filmBean.getSubteam()));
+                this.lastWatchEdit.setText(String.valueOf(filmBean.getLastwatch()));
+                this.remarkEdit.setText(String.valueOf(filmBean.getRemark()));
+                this.svTypeLayout.setVisibility(View.GONE);
+            } break;
+            
+            case SevxConsts.TV:{
+                VideoTvBean tvBean = (VideoTvBean) bundle.getSerializable(SevxConsts.TV_BEAN);
+
+                this.id = tvBean.getId();
+                this.seriesFlagEdit.setText(tvBean.getSeriesflag().toString());
+                this.seriesIdEdit.setText(String.valueOf(tvBean.getSeriesid()));
+                this.nameEdit.setText(String.valueOf(tvBean.getTv_name()));
+                this.yearEdit.setText(String.valueOf(tvBean.getTv_year()));
+                this.directorEdit.setText(String.valueOf(tvBean.getDirector()));
+                this.screenWriterEdit.setText(String.valueOf(tvBean.getScreenwriter()));
+                this.makeEdit.setText(String.valueOf(tvBean.getMake()));
+                this.logoEdit.setText(String.valueOf(tvBean.getLogo()));
+                this.amountEdit.setText(String.valueOf(tvBean.getAmount()));
+                this.localFlagEdit.setText(String.valueOf(tvBean.getLocalflag()));
+                this.localUrlEdit.setText(String.valueOf(tvBean.getLocalurl()));
+                this.remoteFlagEdit.setText(String.valueOf(tvBean.getRemoteflag()));
+                this.remoteUrlEdit.setText(String.valueOf(tvBean.getRemoteurl()));
+                this.containerEdit.setText(String.valueOf(tvBean.getContainer()));
+                this.codeVEdit.setText(String.valueOf(tvBean.getCodev()));
+                this.codeAEdit.setText(String.valueOf(tvBean.getCodea()));
+                this.subTypeEdit.setText(String.valueOf(tvBean.getSubtype()));
+                this.subTeamEdit.setText(String.valueOf(tvBean.getSubteam()));
+                this.lastWatchEdit.setText(String.valueOf(tvBean.getLastwatch()));
+                this.remarkEdit.setText(String.valueOf(tvBean.getRemark()));
+                this.svTypeLayout.setVisibility(View.GONE);
+            } break;
+            
+            case SevxConsts.SV:{
+                VideoSvBean svBean = (VideoSvBean) bundle.getSerializable(SevxConsts.SV_BEAN);
+
+                this.id = svBean.getId();
+                this.seriesFlagLayout.setVisibility(View.GONE);
+                this.seriesIdLayout.setVisibility(View.GONE);
+                this.nameEdit.setText(String.valueOf(svBean.getSv_name()));
+                this.yearEdit.setText(String.valueOf(svBean.getSv_year()));
+                this.directorLayout.setVisibility(View.GONE);
+                this.screenWriterLayout.setVisibility(View.GONE);
+                this.makeEdit.setText(String.valueOf(svBean.getAuthor()));
+                this.logoEdit.setText(String.valueOf(svBean.getLogo()));
+                this.amountLayout.setVisibility(View.GONE);
+                this.localFlagEdit.setText(String.valueOf(svBean.getLocalflag()));
+                this.localUrlEdit.setText(String.valueOf(svBean.getLocalurl()));
+                this.remoteFlagEdit.setText(String.valueOf(svBean.getRemoteflag()));
+                this.remoteUrlEdit.setText(String.valueOf(svBean.getRemoteurl()));
+                this.containerEdit.setText(String.valueOf(svBean.getContainer()));
+                this.codeVEdit.setText(String.valueOf(svBean.getCodev()));
+                this.codeAEdit.setText(String.valueOf(svBean.getCodea()));
+                this.subTypeLayout.setVisibility(View.GONE);
+                this.subTeamLayout.setVisibility(View.GONE);
+                this.lastWatchLayout.setVisibility(View.GONE);
+                this.remarkEdit.setText(String.valueOf(svBean.getRemark()));
+                this.svType.setText(String.valueOf(svBean.getSv_type()));
+            } break;
         }
     }
 

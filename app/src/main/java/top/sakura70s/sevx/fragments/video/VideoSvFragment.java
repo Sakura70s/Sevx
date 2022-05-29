@@ -32,7 +32,7 @@ import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.activitys.SearchActivity;
 import top.sakura70s.sevx.activitys.SevxActivity;
 import top.sakura70s.sevx.adapters.video.VideoItemSvAdapter;
-import top.sakura70s.sevx.beans.VideoSvBean;
+import top.sakura70s.sevx.beans.sv.VideoSvBean;
 import top.sakura70s.sevx.helpers.HttpHelper;
 import top.sakura70s.sevx.helpers.RequestHelper;
 

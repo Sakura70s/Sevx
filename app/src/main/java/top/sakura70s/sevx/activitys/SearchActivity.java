@@ -28,7 +28,7 @@ import top.sakura70s.sevx.adapters.video.VideoItemFilmAdapter;
 import top.sakura70s.sevx.adapters.video.VideoItemSvAdapter;
 import top.sakura70s.sevx.adapters.video.VideoItemTvAdapter;
 import top.sakura70s.sevx.beans.ComicBean;
-import top.sakura70s.sevx.beans.MusicBean;
+import top.sakura70s.sevx.beans.music.MusicBean;
 import top.sakura70s.sevx.beans.NovelBean;
 import top.sakura70s.sevx.beans.VideoFilmBean;
 import top.sakura70s.sevx.beans.VideoSvBean;

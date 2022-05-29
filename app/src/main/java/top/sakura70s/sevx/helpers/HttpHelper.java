@@ -1,5 +1,7 @@
 package top.sakura70s.sevx.helpers;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.Arrays;
@@ -10,7 +12,7 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.beans.ComicBean;
-import top.sakura70s.sevx.beans.MusicBean;
+import top.sakura70s.sevx.beans.music.MusicBean;
 import top.sakura70s.sevx.beans.NovelBean;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
 import top.sakura70s.sevx.beans.VideoFilmBean;

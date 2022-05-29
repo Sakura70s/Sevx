@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +22,7 @@ import okhttp3.Request;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.beans.ComicBean;
-import top.sakura70s.sevx.beans.MusicBean;
+import top.sakura70s.sevx.beans.music.MusicBean;
 import top.sakura70s.sevx.beans.NovelBean;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
 import top.sakura70s.sevx.beans.VideoFilmBean;

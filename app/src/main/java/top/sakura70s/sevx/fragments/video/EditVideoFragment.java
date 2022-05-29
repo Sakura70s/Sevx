@@ -100,27 +100,27 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
 
     private void initView(){
         // 初始化控件
-        seriesFlagEdit = editActivity.findViewById(R.id.editPage_seriesFlag_edit);
-        seriesIdEdit = editActivity.findViewById(R.id.editPage_seriesId_edit);
-        nameEdit = editActivity.findViewById(R.id.editPage_name_edit);
-        yearEdit = editActivity.findViewById(R.id.editPage_year_edit);
-        directorEdit = editActivity.findViewById(R.id.editPage_director_edit);
-        screenWriterEdit = editActivity.findViewById(R.id.editPage_screenWriter_edit);
-        makeEdit = editActivity.findViewById(R.id.editPage_make_edit);
-        logoEdit = editActivity.findViewById(R.id.editPage_logo_edit);
-        amountEdit = editActivity.findViewById(R.id.editPage_amount_edit);
-        localFlagEdit = editActivity.findViewById(R.id.editPage_localFlag_edit);
-        localUrlEdit = editActivity.findViewById(R.id.editPage_localUrl_edit);
-        remoteFlagEdit = editActivity.findViewById(R.id.editPage_remoteFlag_edit);
-        remoteUrlEdit = editActivity.findViewById(R.id.editPage_remoteUrl_edit);
-        containerEdit = editActivity.findViewById(R.id.editPage_container_edit);
-        codeVEdit = editActivity.findViewById(R.id.editPage_codeV_edit);
-        codeAEdit = editActivity.findViewById(R.id.editPage_codeA_edit);
-        subTypeEdit = editActivity.findViewById(R.id.editPage_subType_edit);
-        subTeamEdit = editActivity.findViewById(R.id.editPage_subTeam_edit);
-        lastWatchEdit = editActivity.findViewById(R.id.editPage_lastWatch_edit);
-        remarkEdit = editActivity.findViewById(R.id.editPage_remark_edit);
-        FloatingActionButton completeButton = editActivity.findViewById(R.id.float_button_editPage_complete);
+        seriesFlagEdit = editActivity.findViewById(R.id.editPage_video_seriesFlag_edit);
+        seriesIdEdit = editActivity.findViewById(R.id.editPage_video_seriesId_edit);
+        nameEdit = editActivity.findViewById(R.id.editPage_video_name_edit);
+        yearEdit = editActivity.findViewById(R.id.editPage_video_year_edit);
+        directorEdit = editActivity.findViewById(R.id.editPage_video_director_edit);
+        screenWriterEdit = editActivity.findViewById(R.id.editPage_video_screenWriter_edit);
+        makeEdit = editActivity.findViewById(R.id.editPage_video_make_edit);
+        logoEdit = editActivity.findViewById(R.id.editPage_video_logo_edit);
+        amountEdit = editActivity.findViewById(R.id.editPage_video_amount_edit);
+        localFlagEdit = editActivity.findViewById(R.id.editPage_video_localFlag_edit);
+        localUrlEdit = editActivity.findViewById(R.id.editPage_video_localUrl_edit);
+        remoteFlagEdit = editActivity.findViewById(R.id.editPage_video_remoteFlag_edit);
+        remoteUrlEdit = editActivity.findViewById(R.id.editPage_video_remoteUrl_edit);
+        containerEdit = editActivity.findViewById(R.id.editPage_video_container_edit);
+        codeVEdit = editActivity.findViewById(R.id.editPage_video_codeV_edit);
+        codeAEdit = editActivity.findViewById(R.id.editPage_video_codeA_edit);
+        subTypeEdit = editActivity.findViewById(R.id.editPage_video_subType_edit);
+        subTeamEdit = editActivity.findViewById(R.id.editPage_video_subTeam_edit);
+        lastWatchEdit = editActivity.findViewById(R.id.editPage_video_lastWatch_edit);
+        remarkEdit = editActivity.findViewById(R.id.editPage_video_remark_edit);
+        FloatingActionButton completeButton = editActivity.findViewById(R.id.float_button_editPage_video_complete);
         completeButton.setOnClickListener(this);
 
     }
@@ -160,7 +160,6 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
         if (from.equals(SevxConsts.DETAILS)){
             this.setData();
         }
-//        this.setData();
     }
 
     @Override

@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
-import top.sakura70s.sevx.beans.MusicBean;
+import top.sakura70s.sevx.beans.music.MusicBean;
 
 public class DetailsMusicFragment extends Fragment {
     private Activity mainActivity;

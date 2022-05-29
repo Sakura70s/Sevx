@@ -62,17 +62,17 @@ public class SevxConsts {
     // Video_Animation Post Add Url
     public static final String VIDEO_ANIMATION_POST_ADD = "https://api.7os.top/Sevx/Animation/Add/";
     // Video_Film Post Add Url
-    public static final String VIDEO_FILM_POST_ADD = "https://api.7os.top/Sevx/Animation/Add/";
+    public static final String VIDEO_FILM_POST_ADD = "https://api.7os.top/Sevx/Film/Add/";
     // Video_Tv Post Add Url
-    public static final String VIDEO_TV_POST_ADD = "https://api.7os.top/Sevx/Animation/Add/";
+    public static final String VIDEO_TV_POST_ADD = "https://api.7os.top/Sevx/Tv/Add/";
     // Video_Sv Post Add Url
-    public static final String VIDEO_SV_POST_ADD = "https://api.7os.top/Sevx/Animation/Add/";
+    public static final String VIDEO_SV_POST_ADD = "https://api.7os.top/Sevx/Sv/Add/";
     // Music Post Add Url
-    public static final String MUSIC_POST_ADD = "https://api.7os.top/Sevx/Animation/Add/";
+    public static final String MUSIC_POST_ADD = "https://api.7os.top/Sevx/Music/Add/";
     // Novel Post Add Url
-    public static final String NOVEL_POST_ADD = "https://api.7os.top/Sevx/Animation/Add/";
+    public static final String NOVEL_POST_ADD = "https://api.7os.top/Sevx/Novel/Add/";
     // Comic Post Add Url
-    public static final String COMIC_POST_ADD = "https://api.7os.top/Sevx/Animation/Add/";
+    public static final String COMIC_POST_ADD = "https://api.7os.top/Sevx/Comic/Add/";
 
 
 

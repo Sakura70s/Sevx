@@ -1,8 +1,6 @@
-package top.sakura70s.sevx.beans;
+package top.sakura70s.sevx.beans.music;
 
-import java.io.Serializable;
-
-public class MusicBean implements Serializable {
+public class MusicUpdateBean {
 
     private Integer id;
     private String music_name;
@@ -20,6 +18,8 @@ public class MusicBean implements Serializable {
     private String lyrictype;
     private String updatetime;
     private String remark;
+    private String uname;
+    private String upassword;
 
     public Integer getId() {
         return id;
@@ -147,5 +147,21 @@ public class MusicBean implements Serializable {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public String getUpassword() {
+        return upassword;
+    }
+
+    public void setUpassword(String upassword) {
+        this.upassword = upassword;
     }
 }

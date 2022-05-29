@@ -11,6 +11,8 @@ import android.widget.Toast;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
+import top.sakura70s.sevx.beans.music.MusicBean;
+import top.sakura70s.sevx.fragments.MusicEditFragment;
 import top.sakura70s.sevx.fragments.video.EditVideoFragment;
 
 public class EditActivity extends AppCompatActivity {
@@ -72,7 +74,14 @@ public class EditActivity extends AppCompatActivity {
 
             // 音乐类型
             if (type.equals(SevxConsts.MUSIC)) {
+                Bundle bundle = new Bundle();
+                this.setBundleData(bundle);
 
+                MusicEditFragment musicEditFragment = new MusicEditFragment();
+                musicEditFragment.setArguments(bundle);
+
+                fragmentTransaction.add(R.id.edit_view, musicEditFragment);
+                fragmentTransaction.commit();
             }
 
             // 书籍类型
@@ -80,6 +89,9 @@ public class EditActivity extends AppCompatActivity {
 
             }
         }
+
+
+
         // 从详情页来的，判断为修改，需要预先填写数据
         else if (from.equals(SevxConsts.DETAILS)){
             switch (type){
@@ -101,11 +113,22 @@ public class EditActivity extends AppCompatActivity {
                         // 启动 Fragment
                         fragmentTransaction.add(R.id.edit_view, editVideoFragment);
                         fragmentTransaction.commit();
-
                     }
                 } break;
-                case SevxConsts.FILM: {
+                case SevxConsts.MUSIC: {
+                    if (intent != null){
+                        MusicBean musicBean = (MusicBean) intent.getSerializableExtra(SevxConsts.MUSIC_BEAN);
 
+                        Bundle bundle = new Bundle();
+                        this.setBundleData(bundle);
+                        bundle.putSerializable(SevxConsts.MUSIC_BEAN, musicBean);
+
+                        MusicEditFragment musicEditFragment = new MusicEditFragment();
+                        musicEditFragment.setArguments(bundle);
+
+                        fragmentTransaction.add(R.id.edit_view, musicEditFragment);
+                        fragmentTransaction.commit();
+                    }
                 } break;
             }
         }

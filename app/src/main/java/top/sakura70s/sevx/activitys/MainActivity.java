@@ -23,7 +23,7 @@ import okhttp3.Response;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.beans.ComicBean;
-import top.sakura70s.sevx.beans.MusicBean;
+import top.sakura70s.sevx.beans.music.MusicBean;
 import top.sakura70s.sevx.beans.NovelBean;
 import top.sakura70s.sevx.beans.VideoFilmBean;
 import top.sakura70s.sevx.beans.VideoSvBean;
@@ -196,11 +196,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 开启 EditActivity 并传递数据
      */
     private void editItem() {
+        Intent intent = new Intent(this, EditActivity.class);
+        this.setIntentData(intent);
         // 编辑按钮
         switch (type){
             case SevxConsts.ANIMATION:{
-                Intent intent = new Intent(this, EditActivity.class);
-                this.setIntentData(intent);
                 intent.putExtra(SevxConsts.ANIMATION_BEAN, animationBean);
                 startActivity(intent);
             } break;
@@ -214,7 +214,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this, "Sv is TobeContinued", Toast.LENGTH_SHORT).show();
             } break;
             case SevxConsts.MUSIC:{
-                Toast.makeText(this, "Music is TobeContinued", Toast.LENGTH_SHORT).show();
+                intent.putExtra(SevxConsts.MUSIC_BEAN, musicBean);
+                startActivity(intent);
             } break;
             case SevxConsts.NOVEL:{
                 Toast.makeText(this, "Novel is TobeContinued", Toast.LENGTH_SHORT).show();

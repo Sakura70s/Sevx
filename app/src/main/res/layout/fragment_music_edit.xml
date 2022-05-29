@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.video.EditVideoFragment">
+    tools:context=".fragments.MusicEditFragment">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/float_button_editPage_video_complete"
+            android:id="@+id/float_button_editPage_music_complete"
             android:src="@drawable/ic_complete"
             app:rippleColor="@color/black"
             android:backgroundTint="@color/button"
@@ -23,85 +23,34 @@
             android:layout_marginEnd="16dp"
             android:contentDescription="@string/app_name" />
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:orientation="vertical">
-
-            <!--seriesFlag-->
-            <LinearLayout
-                android:id="@+id/editPage_video_seriesFlag"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginVertical="5dp">
-                <TextView
-                    android:id="@+id/editPage_video_seriesFlag_text"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:textAlignment="center"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seriesFlag"/>
-                <EditText
-                    android:id="@+id/editPage_video_seriesFlag_edit"
-                    android:layout_width="0dp"
-                    android:layout_weight="8"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="@string/flagEdit"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:autofillHints="" />
-            </LinearLayout>
-
-            <!--seriesId-->
-            <LinearLayout
-                android:id="@+id/editPage_video_seriesId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginVertical="5dp">
-                <TextView
-                    android:id="@+id/editPage_video_seriesId_text"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:textAlignment="center"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seriesId"/>
-                <EditText
-                    android:id="@+id/editPage_video_seriesId_edit"
-                    android:layout_width="0dp"
-                    android:layout_weight="8"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="@string/seriesIdEdit"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:autofillHints="" />
-            </LinearLayout>
+            android:orientation="vertical"
+            android:layout_margin="10dp">
 
             <!--Name-->
             <LinearLayout
-                android:id="@+id/editPage_video_name"
+                android:id="@+id/editPage_music_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_name_text"
+                    android:id="@+id/editPage_music_name_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/editName"/>
+                    android:text="歌曲"/>
                 <EditText
-                    android:id="@+id/editPage_video_name_edit"
+                    android:id="@+id/editPage_music_name_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="@string/editNameEdit"
+                    android:hint="输入歌曲名"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
@@ -109,448 +58,349 @@
 
             <!--Year-->
             <LinearLayout
-                android:id="@+id/editPage_video_year"
+                android:id="@+id/editPage_music_year"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_year_text"
+                    android:id="@+id/editPage_music_year_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/editYear"/>
+                    android:text="年份"/>
                 <EditText
-                    android:id="@+id/editPage_video_year_edit"
+                    android:id="@+id/editPage_music_year_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="@string/editYearEdit"
+                    android:hint="输入歌曲发行年份"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
 
-            <!--导演-->
+            <!--Logo-->
             <LinearLayout
-                android:id="@+id/editPage_video_director"
+                android:id="@+id/editPage_music_logo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_director_text"
+                    android:id="@+id/editPage_music_logo_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/director"/>
+                    android:text="封面"/>
                 <EditText
-                    android:id="@+id/editPage_video_director_edit"
+                    android:id="@+id/editPage_music_logo_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="@string/directorEdit"
+                    android:hint="输入专辑封面链接"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
 
-            <!--screenWriter-->
+            <!--Artist-->
             <LinearLayout
-                android:id="@+id/editPage_video_screenWriter"
+                android:id="@+id/editPage_music_artist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_screenWriter_text"
+                    android:id="@+id/editPage_music_artist_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/screenWriter"/>
+                    android:text="艺术家"/>
                 <EditText
-                    android:id="@+id/editPage_video_screenWriter_edit"
+                    android:id="@+id/editPage_music_artist_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="@string/screenWriterEdit"
+                    android:hint="输入艺术家"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
 
-            <!--make-->
+            <!--Album-->
             <LinearLayout
-                android:id="@+id/editPage_video_make"
+                android:id="@+id/editPage_music_album"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_make_text"
+                    android:id="@+id/editPage_music_album_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/make"/>
+                    android:text="专辑"/>
                 <EditText
-                    android:id="@+id/editPage_video_make_edit"
+                    android:id="@+id/editPage_music_album_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="@string/makeEdit"
+                    android:hint="输入专辑"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
 
-            <!--logo-->
+            <!--Lyrics-->
             <LinearLayout
-                android:id="@+id/editPage_video_logo"
+                android:id="@+id/editPage_music_lyrics"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_logo_text"
+                    android:id="@+id/editPage_music_lyrics_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/logo"/>
+                    android:text="作词"/>
                 <EditText
-                    android:id="@+id/editPage_video_logo_edit"
+                    android:id="@+id/editPage_music_lyrics_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="@string/logoEdit"
+                    android:hint="输入作词"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
 
-            <!--amount-->
+            <!--Written-->
             <LinearLayout
-                android:id="@+id/editPage_video_amount"
+                android:id="@+id/editPage_music_written"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_amount_text"
+                    android:id="@+id/editPage_music_written_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/amount"/>
+                    android:text="作曲"/>
                 <EditText
-                    android:id="@+id/editPage_video_amount_edit"
+                    android:id="@+id/editPage_music_written_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="@string/amountEdit"
+                    android:hint="输入作曲"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
 
-            <!--localFlag-->
+            <!--LocalFlag-->
             <LinearLayout
-                android:id="@+id/editPage_video_localFlag"
+                android:id="@+id/editPage_music_localFlag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_localFlag_text"
+                    android:id="@+id/editPage_music_localFlag_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/localFlag"/>
+                    android:text="本地标志"/>
                 <EditText
-                    android:id="@+id/editPage_video_localFlag_edit"
+                    android:id="@+id/editPage_music_localFlag_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="@string/flagEdit"
+                    android:hint="True or False"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
 
-            <!--localURL-->
+            <!--LocalUrl-->
             <LinearLayout
-                android:id="@+id/editPage_video_localUrl"
+                android:id="@+id/editPage_music_localUrl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_localUrl_text"
+                    android:id="@+id/editPage_music_localUrl_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/localUrl"/>
+                    android:text="本地地址"/>
                 <EditText
-                    android:id="@+id/editPage_video_localUrl_edit"
+                    android:id="@+id/editPage_music_localUrl_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="textUri"
-                    android:hint="@string/localUrlEdit"
+                    android:hint="输入本地存放位置"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
 
-            <!--remoteFlag-->
+
+            <!--RemoteFlag-->
             <LinearLayout
-                android:id="@+id/editPage_video_remoteFlag"
+                android:id="@+id/editPage_music_remoteFlag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_remoteFlag_text"
+                    android:id="@+id/editPage_music_remoteFlag_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/remoteFlag"/>
+                    android:text="远程标志"/>
                 <EditText
-                    android:id="@+id/editPage_video_remoteFlag_edit"
+                    android:id="@+id/editPage_music_remoteFlag_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="@string/flagEdit"
+                    android:hint="True or False"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
+
 
             <!--remoteUrl-->
             <LinearLayout
-                android:id="@+id/editPage_video_remoteUrl"
+                android:id="@+id/editPage_music_remoteUrl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_remoteUrl_text"
+                    android:id="@+id/editPage_music_remoteUrl_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/remoteUrl"/>
+                    android:text="远程地址"/>
                 <EditText
-                    android:id="@+id/editPage_video_remoteUrl_edit"
+                    android:id="@+id/editPage_music_remoteUrl_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="textUri"
-                    android:hint="@string/remoteUrlEdit"
+                    android:hint="输入远程地址"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
+
 
             <!--container-->
             <LinearLayout
-                android:id="@+id/editPage_video_container"
+                android:id="@+id/editPage_music_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_container_text"
+                    android:id="@+id/editPage_music_container_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/container"/>
+                    android:text="容器格式"/>
                 <EditText
-                    android:id="@+id/editPage_video_container_edit"
+                    android:id="@+id/editPage_music_container_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="@string/containerEdit"
+                    android:hint="输入歌曲容器格式"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
 
-            <!--codeV-->
+            <!--lyricType-->
             <LinearLayout
-                android:id="@+id/editPage_video_codeV"
+                android:id="@+id/editPage_music_lyricType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_codeV_text"
+                    android:id="@+id/editPage_music_lyricType_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/codeV"/>
+                    android:text="歌词类型"/>
                 <EditText
-                    android:id="@+id/editPage_video_codeV_edit"
+                    android:id="@+id/editPage_music_lyricType_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="@string/codeVEdit"
+                    android:hint="输入歌曲歌词类型"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
 
-            <!--codeA-->
-            <LinearLayout
-                android:id="@+id/editPage_video_codeA"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginVertical="5dp">
-                <TextView
-                    android:id="@+id/editPage_video_codeA_text"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:textAlignment="center"
-                    android:layout_height="wrap_content"
-                    android:text="@string/codeA"/>
-                <EditText
-                    android:id="@+id/editPage_video_codeA_edit"
-                    android:layout_width="0dp"
-                    android:layout_weight="8"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="@string/codeAEdit"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:autofillHints="" />
-            </LinearLayout>
-
-            <!--subType-->
-            <LinearLayout
-                android:id="@+id/editPage_video_subType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginVertical="5dp">
-                <TextView
-                    android:id="@+id/editPage_video_subType_text"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:textAlignment="center"
-                    android:layout_height="wrap_content"
-                    android:text="@string/subType"/>
-                <EditText
-                    android:id="@+id/editPage_video_subType_edit"
-                    android:layout_width="0dp"
-                    android:layout_weight="8"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="@string/subTypeEdit"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:autofillHints="" />
-            </LinearLayout>
-
-            <!--subTeam-->
-            <LinearLayout
-                android:id="@+id/editPage_video_subTeam"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginVertical="5dp">
-                <TextView
-                    android:id="@+id/editPage_video_subTeam_text"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:textAlignment="center"
-                    android:layout_height="wrap_content"
-                    android:text="@string/subTeam"/>
-                <EditText
-                    android:id="@+id/editPage_video_subTeam_edit"
-                    android:layout_width="0dp"
-                    android:layout_weight="8"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="@string/subTeamEdit"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:autofillHints="" />
-            </LinearLayout>
-
-            <!--lastWatch-->
-            <LinearLayout
-                android:id="@+id/editPage_video_lastWatch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginVertical="5dp">
-                <TextView
-                    android:id="@+id/editPage_video_lastWatch_text"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:textAlignment="center"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lastWatch"/>
-                <EditText
-                    android:id="@+id/editPage_video_lastWatch_edit"
-                    android:layout_width="0dp"
-                    android:layout_weight="8"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="@string/lastWatchEdit"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:autofillHints="" />
-            </LinearLayout>
 
             <!--remark-->
             <LinearLayout
-                android:id="@+id/editPage_video_remark"
+                android:id="@+id/editPage_music_remark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp">
                 <TextView
-                    android:id="@+id/editPage_video_remark_text"
+                    android:id="@+id/editPage_music_remark_text"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
-                    android:text="@string/remark"/>
+                    android:text="备注"/>
                 <EditText
-                    android:id="@+id/editPage_video_remark_edit"
+                    android:id="@+id/editPage_music_remark_edit"
                     android:layout_width="0dp"
                     android:layout_weight="8"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:hint="@string/remarkEdit"
+                    android:hint="输入歌曲备注"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:autofillHints="" />
             </LinearLayout>
+            
 
         </LinearLayout>
 
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </ScrollView>

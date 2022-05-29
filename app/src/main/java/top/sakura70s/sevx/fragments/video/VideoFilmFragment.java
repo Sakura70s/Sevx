@@ -50,7 +50,7 @@ public class VideoFilmFragment extends Fragment implements View.OnClickListener{
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            videoItemFilmAdapter.setData(list);
+            videoItemFilmAdapter.setData(list, uName, uPassword);
             videoItemFilmAdapter.notifyItemChanged(list.size());
             swipeRefreshLayout.setRefreshing(false);
         }
@@ -86,7 +86,7 @@ public class VideoFilmFragment extends Fragment implements View.OnClickListener{
     private void initView(View view){
         videoItemFilmAdapter = new VideoItemFilmAdapter();
         // 设置数据
-        videoItemFilmAdapter.setData(list);
+        videoItemFilmAdapter.setData(list, uName, uPassword);
         // 绑定 RecyclerView 控件
         RecyclerView filmRecyclerView = view.findViewById(R.id.recyclerview_video_film);
         // 1. 设置 layoutManager

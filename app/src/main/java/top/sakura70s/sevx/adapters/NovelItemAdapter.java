@@ -22,6 +22,8 @@ import top.sakura70s.sevx.beans.NovelBean;
 
 public class NovelItemAdapter extends RecyclerView.Adapter<NovelItemAdapter.NovelItemHolder> {
     private List<NovelBean> list;
+    private String uName;
+    private String uPassword;
 
     @NonNull
     @Override
@@ -40,6 +42,8 @@ public class NovelItemAdapter extends RecyclerView.Adapter<NovelItemAdapter.Nove
             Intent intent = new Intent(context, MainActivity.class);
             intent.putExtra(SevxConsts.TYPE, SevxConsts.NOVEL);
             intent.putExtra(SevxConsts.ID, id);
+            intent.putExtra(SevxConsts.UNAME, uName);
+            intent.putExtra(SevxConsts.UPASSWORD, uPassword);
             context.startActivity(intent);
         });
     }
@@ -49,8 +53,10 @@ public class NovelItemAdapter extends RecyclerView.Adapter<NovelItemAdapter.Nove
         return list == null ? 0 : list.size();
     }
 
-    public void setData(List<NovelBean> list) {
+    public void setData(List<NovelBean> list, String uName, String uPassword) {
         this.list = list;
+        this.uName = uName;
+        this.uPassword = uPassword;
         notifyItemChanged(list.size());
     }
 

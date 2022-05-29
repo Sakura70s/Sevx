@@ -240,32 +240,116 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new OkHttpClient().newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "删除失败", Toast.LENGTH_SHORT).show());
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Animation 删除失败", Toast.LENGTH_SHORT).show());
                     }
 
                     @Override
                     public void onResponse(@NonNull Call call, @NonNull Response response) {
-                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "删除成功", Toast.LENGTH_SHORT).show());
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Animation 删除成功", Toast.LENGTH_SHORT).show());
                     }
                 });
             } break;
             case SevxConsts.FILM:{
-                Toast.makeText(this, "Film is TobeContinued", Toast.LENGTH_SHORT).show();
+                // 构建请求体
+                JSONObject json = new JsonFrom().deleteJson(id, uName, uPassword);
+                Request request = new RequestHelper().getDeleteRequest(SevxConsts.VIDEO_FILM_DELETE, json);
+                // 执行删除
+                new OkHttpClient().newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Film 删除失败", Toast.LENGTH_SHORT).show());
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) {
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Film 删除成功", Toast.LENGTH_SHORT).show());
+                    }
+                });
             } break;
             case SevxConsts.TV:{
-                Toast.makeText(this, "Tv is TobeContinued", Toast.LENGTH_SHORT).show();
+                // 构建请求体
+                JSONObject json = new JsonFrom().deleteJson(id, uName, uPassword);
+                Request request = new RequestHelper().getDeleteRequest(SevxConsts.VIDEO_TV_DELETE, json);
+                // 执行删除
+                new OkHttpClient().newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Tv 删除失败", Toast.LENGTH_SHORT).show());
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) {
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Tv 删除成功", Toast.LENGTH_SHORT).show());
+                    }
+                });
             } break;
             case SevxConsts.SV:{
-                Toast.makeText(this, "Sv is TobeContinued", Toast.LENGTH_SHORT).show();
+                // 构建请求体
+                JSONObject json = new JsonFrom().deleteJson(id, uName, uPassword);
+                Request request = new RequestHelper().getDeleteRequest(SevxConsts.VIDEO_SV_DELETE, json);
+                // 执行删除
+                new OkHttpClient().newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Sv 删除失败", Toast.LENGTH_SHORT).show());
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) {
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Sv 删除成功", Toast.LENGTH_SHORT).show());
+                    }
+                });
             } break;
             case SevxConsts.MUSIC:{
-                Toast.makeText(this, "Music is TobeContinued", Toast.LENGTH_SHORT).show();
+                // 构建请求体
+                JSONObject json = new JsonFrom().deleteJson(id, uName, uPassword);
+                Request request = new RequestHelper().getDeleteRequest(SevxConsts.MUSIC_DELETE, json);
+                // 执行删除
+                new OkHttpClient().newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Music 删除失败", Toast.LENGTH_SHORT).show());
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) {
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Music 删除成功", Toast.LENGTH_SHORT).show());
+                    }
+                });
             } break;
             case SevxConsts.NOVEL:{
-                Toast.makeText(this, "Novel is TobeContinued", Toast.LENGTH_SHORT).show();
+                // 构建请求体
+                JSONObject json = new JsonFrom().deleteJson(id, uName, uPassword);
+                Request request = new RequestHelper().getDeleteRequest(SevxConsts.NOVEL_DELETE, json);
+                // 执行删除
+                new OkHttpClient().newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Novel 删除失败", Toast.LENGTH_SHORT).show());
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) {
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Novel 删除成功", Toast.LENGTH_SHORT).show());
+                    }
+                });
             } break;
             case SevxConsts.COMIC:{
-                Toast.makeText(this, "Comic is TobeContinued", Toast.LENGTH_SHORT).show();
+                // 构建请求体
+                JSONObject json = new JsonFrom().deleteJson(id, uName, uPassword);
+                Request request = new RequestHelper().getDeleteRequest(SevxConsts.COMIC_DELETE, json);
+                // 执行删除
+                new OkHttpClient().newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Comic 删除失败", Toast.LENGTH_SHORT).show());
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) {
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "Comic 删除成功", Toast.LENGTH_SHORT).show());
+                    }
+                });
             } break;
         }
     }

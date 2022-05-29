@@ -48,7 +48,7 @@ public class MusicFragment extends Fragment implements View.OnClickListener {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            musicItemAdapter.setData(list);
+            musicItemAdapter.setData(list, uName, uPassword);
             musicItemAdapter.notifyItemChanged(list.size());
             swipeRefreshLayout.setRefreshing(false);
         }
@@ -80,7 +80,7 @@ public class MusicFragment extends Fragment implements View.OnClickListener {
 
     private void initView(View view){
         musicItemAdapter = new MusicItemAdapter();
-        musicItemAdapter.setData(list);
+        musicItemAdapter.setData(list, uName, uPassword);
         RecyclerView musicRecyclerView = view.findViewById(R.id.recyclerview_music);
         musicRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         musicRecyclerView.setAdapter(musicItemAdapter);

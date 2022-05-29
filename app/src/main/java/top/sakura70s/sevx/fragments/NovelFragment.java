@@ -48,7 +48,7 @@ public class NovelFragment extends Fragment implements View.OnClickListener {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            novelItemAdapter.setData(list);
+            novelItemAdapter.setData(list, uName, uPassword);
             novelItemAdapter.notifyItemChanged(list.size());
             swipeRefreshLayout.setRefreshing(false);
         }
@@ -80,7 +80,7 @@ public class NovelFragment extends Fragment implements View.OnClickListener {
 
     private void initView(View view){
         novelItemAdapter = new NovelItemAdapter();
-        novelItemAdapter.setData(list);
+        novelItemAdapter.setData(list, uName, uPassword);
         // 设置适配器
         RecyclerView novelRecyclerView = view.findViewById(R.id.recyclerview_novel);
         novelRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -23,6 +23,8 @@ import top.sakura70s.sevx.beans.VideoTvBean;
 public class VideoItemTvAdapter extends RecyclerView.Adapter<VideoItemTvAdapter.VideoItemTvHolder> {
     // 定义 传进来的 集合
     private List<VideoTvBean> list;
+    private String uName;
+    private String uPassword;
 
     // 约定俗成
     @NonNull
@@ -47,6 +49,8 @@ public class VideoItemTvAdapter extends RecyclerView.Adapter<VideoItemTvAdapter.
             // 这是由 Tv 发起的跳转
             intent.putExtra(SevxConsts.TYPE, SevxConsts.TV);
             intent.putExtra(SevxConsts.ID, id);
+            intent.putExtra(SevxConsts.UNAME, uName);
+            intent.putExtra(SevxConsts.UPASSWORD, uPassword);
             context.startActivity(intent);
 
         });
@@ -59,8 +63,10 @@ public class VideoItemTvAdapter extends RecyclerView.Adapter<VideoItemTvAdapter.
     }
 
     //
-    public void setData(List<VideoTvBean> list) {
+    public void setData(List<VideoTvBean> list, String uName, String uPassword) {
         this.list = list;
+        this.uName = uName;
+        this.uPassword = uPassword;
         notifyItemChanged(list.size());
     }
 

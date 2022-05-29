@@ -47,7 +47,7 @@ public class ComicFragment extends Fragment implements View.OnClickListener {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            comicItemAdapter.setData(list);
+            comicItemAdapter.setData(list, uName, uPassword);
             comicItemAdapter.notifyItemChanged(list.size());
             swipeRefreshLayout.setRefreshing(false);
         }
@@ -80,7 +80,7 @@ public class ComicFragment extends Fragment implements View.OnClickListener {
 
     private void initView(View view){
         comicItemAdapter = new ComicItemAdapter();
-        comicItemAdapter.setData(list);
+        comicItemAdapter.setData(list, uName, uPassword);
         // 设置适配器
         RecyclerView comicRecyclerView = view.findViewById(R.id.recyclerview_comic);
         comicRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

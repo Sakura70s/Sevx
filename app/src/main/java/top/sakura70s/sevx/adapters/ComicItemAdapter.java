@@ -22,6 +22,8 @@ import top.sakura70s.sevx.beans.ComicBean;
 
 public class ComicItemAdapter extends RecyclerView.Adapter<ComicItemAdapter.ComicItemHolder> {
     private List<ComicBean> list;
+    private String uName;
+    private String uPassword;
 
     @NonNull
     @Override
@@ -40,6 +42,8 @@ public class ComicItemAdapter extends RecyclerView.Adapter<ComicItemAdapter.Comi
             Intent intent = new Intent(context, MainActivity.class);
             intent.putExtra(SevxConsts.TYPE, SevxConsts.COMIC);
             intent.putExtra(SevxConsts.ID, id);
+            intent.putExtra(SevxConsts.UNAME, uName);
+            intent.putExtra(SevxConsts.UPASSWORD, uPassword);
             context.startActivity(intent);
         });
     }
@@ -49,8 +53,10 @@ public class ComicItemAdapter extends RecyclerView.Adapter<ComicItemAdapter.Comi
         return list == null ? 0 : list.size();
     }
 
-    public void setData(List<ComicBean> list) {
+    public void setData(List<ComicBean> list, String uName, String uPassword) {
         this.list = list;
+        this.uName = uName;
+        this.uPassword = uPassword;
         notifyItemChanged(list.size());
     }
 

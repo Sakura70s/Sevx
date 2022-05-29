@@ -49,7 +49,7 @@ public class VideoTvFragment extends Fragment implements View.OnClickListener{
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            videoItemTvAdapter.setData(list);
+            videoItemTvAdapter.setData(list, uName, uPassword);
             videoItemTvAdapter.notifyItemChanged(list.size());
             swipeRefreshLayout.setRefreshing(false);
         }
@@ -83,7 +83,7 @@ public class VideoTvFragment extends Fragment implements View.OnClickListener{
 
     private void initView(View view){
         videoItemTvAdapter = new VideoItemTvAdapter();
-        videoItemTvAdapter.setData(list);
+        videoItemTvAdapter.setData(list, uName, uPassword);
         RecyclerView tvRecyclerView = view.findViewById(R.id.recyclerview_video_tv);
         tvRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         tvRecyclerView.setAdapter(videoItemTvAdapter);

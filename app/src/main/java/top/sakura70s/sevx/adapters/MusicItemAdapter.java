@@ -22,6 +22,8 @@ import top.sakura70s.sevx.beans.MusicBean;
 
 public class MusicItemAdapter extends RecyclerView.Adapter<MusicItemAdapter.MusicItemHolder> {
     private List<MusicBean> list;
+    private String uName;
+    private String uPassword;
 
     @NonNull
     @Override
@@ -40,6 +42,8 @@ public class MusicItemAdapter extends RecyclerView.Adapter<MusicItemAdapter.Musi
             Intent intent = new Intent(context, MainActivity.class);
             intent.putExtra(SevxConsts.TYPE, SevxConsts.MUSIC);
             intent.putExtra(SevxConsts.ID, id);
+            intent.putExtra(SevxConsts.UNAME, uName);
+            intent.putExtra(SevxConsts.UPASSWORD, uPassword);
             context.startActivity(intent);
         });
     }
@@ -49,8 +53,10 @@ public class MusicItemAdapter extends RecyclerView.Adapter<MusicItemAdapter.Musi
         return list == null ? 0 : list.size();
     }
 
-    public void setData(List<MusicBean> list) {
+    public void setData(List<MusicBean> list, String uName, String uPassword) {
         this.list = list;
+        this.uName = uName;
+        this.uPassword = uPassword;
         notifyItemChanged(list.size());
     }
 

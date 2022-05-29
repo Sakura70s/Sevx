@@ -49,7 +49,7 @@ public class VideoSvFragment extends Fragment implements View.OnClickListener{
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            videoItemSvAdapter.setData(list);
+            videoItemSvAdapter.setData(list, uName, uPassword);
             videoItemSvAdapter.notifyItemChanged(list.size());
             swipeRefreshLayout.setRefreshing(false);
         }
@@ -85,7 +85,7 @@ public class VideoSvFragment extends Fragment implements View.OnClickListener{
     private void initView(View view){
         videoItemSvAdapter = new VideoItemSvAdapter();
         // 设置数据
-        videoItemSvAdapter.setData(list);
+        videoItemSvAdapter.setData(list, uName, uPassword);
         // 绑定 RecyclerView 控件
         RecyclerView svRecyclerView = view.findViewById(R.id.recyclerview_video_sv);
         // 1. 设置 layoutManager

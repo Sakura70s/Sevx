@@ -29,6 +29,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
+import top.sakura70s.sevx.activitys.EditActivity;
 import top.sakura70s.sevx.activitys.SearchActivity;
 import top.sakura70s.sevx.activitys.SevxActivity;
 import top.sakura70s.sevx.adapters.video.VideoItemTvAdapter;
@@ -114,7 +115,9 @@ public class VideoTvFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         // Tv 添加按钮 逻辑
         if (view.getId() == R.id.float_button_tv_add){
-            Toast.makeText(getContext(), "正在路上。。。", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getActivity(), EditActivity.class);
+            this.setIntentData(intent);
+            startActivity(intent);
         }
         // Tv 搜索按钮 逻辑
         if (view.getId() == R.id.float_button_tv_search){

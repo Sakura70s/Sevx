@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +17,17 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.SevxConsts;
+import top.sakura70s.sevx.beans.film.FilmAddBean;
+import top.sakura70s.sevx.beans.film.FilmUpdateBean;
 import top.sakura70s.sevx.beans.film.VideoFilmBean;
 import top.sakura70s.sevx.beans.animation.AnimationAddBean;
 import top.sakura70s.sevx.beans.animation.AnimationUpdateBean;
 import top.sakura70s.sevx.beans.animation.VideoAnimationBean;
+import top.sakura70s.sevx.beans.sv.SvAddBean;
+import top.sakura70s.sevx.beans.sv.SvUpdateBean;
 import top.sakura70s.sevx.beans.sv.VideoSvBean;
+import top.sakura70s.sevx.beans.tv.TvAddBean;
+import top.sakura70s.sevx.beans.tv.TvUpdateBean;
 import top.sakura70s.sevx.beans.tv.VideoTvBean;
 import top.sakura70s.sevx.helpers.HttpHelper;
 
@@ -90,7 +95,6 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        completeButton.setOnClickListener(this);
         this.initView();
 
     }
@@ -152,8 +156,40 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onStart() {
         super.onStart();
+        // 详情页来的预先填写数据
         if (from.equals(SevxConsts.DETAILS)){
             this.setData();
+        }
+
+        // 首页来的根据不同类型设置视图
+        if (from.equals(SevxConsts.LIST)){
+            this.setView();
+        }
+    }
+
+    private void setView() {
+        switch (type){
+            case SevxConsts.ANIMATION:
+
+            case SevxConsts.TV: {
+                this.svTypeLayout.setVisibility(View.GONE);
+            } break;
+
+            case SevxConsts.FILM:{
+                this.amountLayout.setVisibility(View.GONE);
+                this.svTypeLayout.setVisibility(View.GONE);
+            } break;
+
+            case SevxConsts.SV:{
+                this.seriesFlagLayout.setVisibility(View.GONE);
+                this.seriesIdLayout.setVisibility(View.GONE);
+                this.directorLayout.setVisibility(View.GONE);
+                this.screenWriterLayout.setVisibility(View.GONE);
+                this.amountLayout.setVisibility(View.GONE);
+                this.subTeamLayout.setVisibility(View.GONE);
+                this.subTypeLayout.setVisibility(View.GONE);
+                this.lastWatchLayout.setVisibility(View.GONE);
+            } break;
         }
     }
 
@@ -292,12 +328,56 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
                     }
 
                 } break;
+
                 // 新增电影
                 case SevxConsts.FILM: {
-
+                    String addFilmJson = this.getAddFilmJson();
+                    if (addFilmJson != null){
+                        new Thread(() -> {
+                            if (httpHelper.filmAdd(addFilmJson)) {
+                                editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加成功！", Toast.LENGTH_SHORT).show());
+                            } else {
+                                editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加失败！", Toast.LENGTH_SHORT).show());
+                            }
+                        }).start();
+                    } else {
+                        Toast.makeText(getContext(), "有东西没有填写哦~~~", Toast.LENGTH_SHORT).show();
+                    }
                 } break;
+
+                case SevxConsts.TV:{
+                    String addTvJson = this.getAddTvJson();
+                    if (addTvJson != null){
+                        new Thread(() -> {
+                            if (httpHelper.tvAdd(addTvJson)) {
+                                editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加成功！", Toast.LENGTH_SHORT).show());
+                            } else {
+                                editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加失败！", Toast.LENGTH_SHORT).show());
+                            }
+                        }).start();
+                    } else {
+                        Toast.makeText(getContext(), "有东西没有填写哦~~~", Toast.LENGTH_SHORT).show();
+                    }
+                } break;
+
+                case SevxConsts.SV:{
+                    String addSvJson = this.getAddSvJson();
+                    if (addSvJson != null){
+                        new Thread(() -> {
+                            if (httpHelper.svAdd(addSvJson)) {
+                                editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加成功！", Toast.LENGTH_SHORT).show());
+                            } else {
+                                editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加失败！", Toast.LENGTH_SHORT).show());
+                            }
+                        }).start();
+                    } else {
+                        Toast.makeText(getContext(), "有东西没有填写哦~~~", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         }
+
+
         // 更新
         if (from.equals(SevxConsts.DETAILS)) {
             switch (type) {
@@ -312,9 +392,39 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
                         }
                     }).start();
                 } break;
-                case SevxConsts.FILM: {
 
+                case SevxConsts.FILM: {
+                    String filmUpdateJson = this.getUpdateFilmJson();
+                    new Thread(() -> {
+                        if (httpHelper.filmUpdate(filmUpdateJson)) {
+                            editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新成功！", Toast.LENGTH_SHORT).show());
+                        } else {
+                            editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新失败！", Toast.LENGTH_SHORT).show());
+                        }
+                    }).start();
                 } break;
+
+                case SevxConsts.TV:{
+                    String tvUpdateJson = this.getUpdateTvJson();
+                    new Thread(() -> {
+                        if (httpHelper.tvUpdate(tvUpdateJson)) {
+                            editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新成功！", Toast.LENGTH_SHORT).show());
+                        } else {
+                            editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新失败！", Toast.LENGTH_SHORT).show());
+                        }
+                    }).start();
+                } break;
+
+                case SevxConsts.SV:{
+                    String svUpdateJson = this.getUpdateSvJson();
+                    new Thread(() -> {
+                        if (httpHelper.svUpdate(svUpdateJson)) {
+                            editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新成功！", Toast.LENGTH_SHORT).show());
+                        } else {
+                            editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新失败！", Toast.LENGTH_SHORT).show());
+                        }
+                    }).start();
+                }
             }
         }
     }
@@ -326,32 +436,36 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
      */
     private String getAnimationUpdateJson(){
         // 实例化一个修改动漫实体类
-        AnimationUpdateBean animationUpdateBean = new AnimationUpdateBean();
-        // 数据填充
-        animationUpdateBean.setId(id);
-        animationUpdateBean.setSeriesflag(Boolean.valueOf(seriesFlagEdit.getText().toString()));
-        animationUpdateBean.setSeriesid(Integer.valueOf(seriesIdEdit.getText().toString()));
-        animationUpdateBean.setAnimation_name(nameEdit.getText().toString());
-        animationUpdateBean.setAnimation_year(yearEdit.getText().toString());
-        animationUpdateBean.setDirector(directorEdit.getText().toString());
-        animationUpdateBean.setScreenwriter(screenWriterEdit.getText().toString());
-        animationUpdateBean.setMake(makeEdit.getText().toString());
-        animationUpdateBean.setLogo(logoEdit.getText().toString());
-        animationUpdateBean.setAmount(Integer.valueOf(amountEdit.getText().toString()));
-        animationUpdateBean.setLocalflag(Boolean.valueOf(localFlagEdit.getText().toString()));
-        animationUpdateBean.setLocalurl(localUrlEdit.getText().toString());
-        animationUpdateBean.setRemoteflag(Boolean.valueOf(remoteFlagEdit.getText().toString()));
-        animationUpdateBean.setRemoteurl(remoteUrlEdit.getText().toString());
-        animationUpdateBean.setContainer(containerEdit.getText().toString());
-        animationUpdateBean.setCodev(codeVEdit.getText().toString());
-        animationUpdateBean.setCodea(codeAEdit.getText().toString());
-        animationUpdateBean.setSubtype(subTypeEdit.getText().toString());
-        animationUpdateBean.setSubteam(subTeamEdit.getText().toString());
-        animationUpdateBean.setLastwatch(lastWatchEdit.getText().toString());
-        animationUpdateBean.setRemark(remarkEdit.getText().toString());
-        animationUpdateBean.setUname(uName);
-        animationUpdateBean.setUpassword(uPassword);
-        return new Gson().toJson(animationUpdateBean);
+        AnimationUpdateBean bean = new AnimationUpdateBean();
+        try {
+            // 数据填充
+            bean.setId(id);
+            bean.setSeriesflag(Boolean.valueOf(seriesFlagEdit.getText().toString()));
+            bean.setSeriesid(Integer.valueOf(seriesIdEdit.getText().toString()));
+            bean.setAnimation_name(nameEdit.getText().toString());
+            bean.setAnimation_year(yearEdit.getText().toString());
+            bean.setDirector(directorEdit.getText().toString());
+            bean.setScreenwriter(screenWriterEdit.getText().toString());
+            bean.setMake(makeEdit.getText().toString());
+            bean.setLogo(logoEdit.getText().toString());
+            bean.setAmount(Integer.valueOf(amountEdit.getText().toString()));
+            bean.setLocalflag(Boolean.valueOf(localFlagEdit.getText().toString()));
+            bean.setLocalurl(localUrlEdit.getText().toString());
+            bean.setRemoteflag(Boolean.valueOf(remoteFlagEdit.getText().toString()));
+            bean.setRemoteurl(remoteUrlEdit.getText().toString());
+            bean.setContainer(containerEdit.getText().toString());
+            bean.setCodev(codeVEdit.getText().toString());
+            bean.setCodea(codeAEdit.getText().toString());
+            bean.setSubtype(subTypeEdit.getText().toString());
+            bean.setSubteam(subTeamEdit.getText().toString());
+            bean.setLastwatch(lastWatchEdit.getText().toString());
+            bean.setRemark(remarkEdit.getText().toString());
+            bean.setUname(uName);
+            bean.setUpassword(uPassword);
+        } catch (Exception ignored){
+            return null;
+        }
+        return new Gson().toJson(bean);
     }
 
     /**
@@ -360,36 +474,211 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
      */
     private String getAnimationAddJson(){
         // 实例化一个 添加动漫 实体类
-        AnimationAddBean animationAddBean = new AnimationAddBean();
+        AnimationAddBean bean = new AnimationAddBean();
         try {
-            animationAddBean.setSeriesflag(Boolean.valueOf(seriesFlagEdit.getText().toString()));
-            animationAddBean.setSeriesid(Integer.valueOf(seriesIdEdit.getText().toString()));
-            animationAddBean.setAnimation_name(nameEdit.getText().toString());
-            animationAddBean.setAnimation_year(yearEdit.getText().toString());
-            animationAddBean.setDirector(directorEdit.getText().toString());
-            animationAddBean.setScreenwriter(screenWriterEdit.getText().toString());
-            animationAddBean.setMake(makeEdit.getText().toString());
-            animationAddBean.setLogo(logoEdit.getText().toString());
-            animationAddBean.setAmount(Integer.valueOf(amountEdit.getText().toString()));
-            animationAddBean.setLocalflag(Boolean.valueOf(localFlagEdit.getText().toString()));
-            animationAddBean.setLocalurl(localUrlEdit.getText().toString());
-            animationAddBean.setRemoteflag(Boolean.valueOf(remoteFlagEdit.getText().toString()));
-            animationAddBean.setRemoteurl(remoteUrlEdit.getText().toString());
-            animationAddBean.setContainer(containerEdit.getText().toString());
-            animationAddBean.setCodev(codeVEdit.getText().toString());
-            animationAddBean.setCodea(codeAEdit.getText().toString());
-            animationAddBean.setSubtype(subTypeEdit.getText().toString());
-            animationAddBean.setSubteam(subTeamEdit.getText().toString());
-            animationAddBean.setLastwatch(lastWatchEdit.getText().toString());
-            animationAddBean.setRemark(remarkEdit.getText().toString());
-            animationAddBean.setUname(uName);
-            animationAddBean.setUpassword(uPassword);
+            bean.setSeriesflag(Boolean.valueOf(seriesFlagEdit.getText().toString()));
+            bean.setSeriesid(Integer.valueOf(seriesIdEdit.getText().toString()));
+            bean.setAnimation_name(nameEdit.getText().toString());
+            bean.setAnimation_year(yearEdit.getText().toString());
+            bean.setDirector(directorEdit.getText().toString());
+            bean.setScreenwriter(screenWriterEdit.getText().toString());
+            bean.setMake(makeEdit.getText().toString());
+            bean.setLogo(logoEdit.getText().toString());
+            bean.setAmount(Integer.valueOf(amountEdit.getText().toString()));
+            bean.setLocalflag(Boolean.valueOf(localFlagEdit.getText().toString()));
+            bean.setLocalurl(localUrlEdit.getText().toString());
+            bean.setRemoteflag(Boolean.valueOf(remoteFlagEdit.getText().toString()));
+            bean.setRemoteurl(remoteUrlEdit.getText().toString());
+            bean.setContainer(containerEdit.getText().toString());
+            bean.setCodev(codeVEdit.getText().toString());
+            bean.setCodea(codeAEdit.getText().toString());
+            bean.setSubtype(subTypeEdit.getText().toString());
+            bean.setSubteam(subTeamEdit.getText().toString());
+            bean.setLastwatch(lastWatchEdit.getText().toString());
+            bean.setRemark(remarkEdit.getText().toString());
+            bean.setUname(uName);
+            bean.setUpassword(uPassword);
         } catch (Exception ignored) {
             return null;
         }
-        // 填充数据
+        return new Gson().toJson(bean);
+    }
 
-        return new Gson().toJson(animationAddBean);
+    private String getAddFilmJson(){
+        FilmAddBean bean = new FilmAddBean();
+        try {
+            bean.setSeriesflag(Boolean.valueOf(seriesFlagEdit.getText().toString()));
+            bean.setSeriesid(Integer.valueOf(seriesIdEdit.getText().toString()));
+            bean.setFilm_name(nameEdit.getText().toString());
+            bean.setFilm_year(yearEdit.getText().toString());
+            bean.setDirector(directorEdit.getText().toString());
+            bean.setScreenwriter(screenWriterEdit.getText().toString());
+            bean.setMake(makeEdit.getText().toString());
+            bean.setLogo(logoEdit.getText().toString());
+            bean.setLocalflag(Boolean.valueOf(localFlagEdit.getText().toString()));
+            bean.setLocalurl(localUrlEdit.getText().toString());
+            bean.setRemoteflag(Boolean.valueOf(remoteFlagEdit.getText().toString()));
+            bean.setRemoteurl(remoteUrlEdit.getText().toString());
+            bean.setContainer(containerEdit.getText().toString());
+            bean.setCodev(codeVEdit.getText().toString());
+            bean.setCodea(codeAEdit.getText().toString());
+            bean.setSubtype(subTypeEdit.getText().toString());
+            bean.setSubteam(subTeamEdit.getText().toString());
+            bean.setLastwatch(lastWatchEdit.getText().toString());
+            bean.setRemark(remarkEdit.getText().toString());
+            bean.setUname(uName);
+            bean.setUpassword(uPassword);
+        } catch (Exception ignored) {
+            return null;
+        }
+        return new Gson().toJson(bean);
+    }
+
+    private String getUpdateFilmJson(){
+        FilmUpdateBean bean = new FilmUpdateBean();
+        try {
+            // 数据填充
+            bean.setId(id);
+            bean.setSeriesflag(Boolean.valueOf(seriesFlagEdit.getText().toString()));
+            bean.setSeriesid(Integer.valueOf(seriesIdEdit.getText().toString()));
+            bean.setFilm_name(nameEdit.getText().toString());
+            bean.setFilm_year(yearEdit.getText().toString());
+            bean.setDirector(directorEdit.getText().toString());
+            bean.setScreenwriter(screenWriterEdit.getText().toString());
+            bean.setMake(makeEdit.getText().toString());
+            bean.setLogo(logoEdit.getText().toString());
+            bean.setLocalflag(Boolean.valueOf(localFlagEdit.getText().toString()));
+            bean.setLocalurl(localUrlEdit.getText().toString());
+            bean.setRemoteflag(Boolean.valueOf(remoteFlagEdit.getText().toString()));
+            bean.setRemoteurl(remoteUrlEdit.getText().toString());
+            bean.setContainer(containerEdit.getText().toString());
+            bean.setCodev(codeVEdit.getText().toString());
+            bean.setCodea(codeAEdit.getText().toString());
+            bean.setSubtype(subTypeEdit.getText().toString());
+            bean.setSubteam(subTeamEdit.getText().toString());
+            bean.setLastwatch(lastWatchEdit.getText().toString());
+            bean.setRemark(remarkEdit.getText().toString());
+            bean.setUname(uName);
+            bean.setUpassword(uPassword);
+        } catch (Exception ignored){
+            return null;
+        }
+        return new Gson().toJson(bean);
+
+    }
+
+    private String getAddTvJson(){
+        TvAddBean bean = new TvAddBean();
+        try {
+            bean.setSeriesflag(Boolean.valueOf(seriesFlagEdit.getText().toString()));
+            bean.setSeriesid(Integer.valueOf(seriesIdEdit.getText().toString()));
+            bean.setTv_name(nameEdit.getText().toString());
+            bean.setTv_year(yearEdit.getText().toString());
+            bean.setDirector(directorEdit.getText().toString());
+            bean.setScreenwriter(screenWriterEdit.getText().toString());
+            bean.setMake(makeEdit.getText().toString());
+            bean.setLogo(logoEdit.getText().toString());
+            bean.setAmount(Integer.valueOf(amountEdit.getText().toString()));
+            bean.setLocalflag(Boolean.valueOf(localFlagEdit.getText().toString()));
+            bean.setLocalurl(localUrlEdit.getText().toString());
+            bean.setRemoteflag(Boolean.valueOf(remoteFlagEdit.getText().toString()));
+            bean.setRemoteurl(remoteUrlEdit.getText().toString());
+            bean.setContainer(containerEdit.getText().toString());
+            bean.setCodev(codeVEdit.getText().toString());
+            bean.setCodea(codeAEdit.getText().toString());
+            bean.setSubtype(subTypeEdit.getText().toString());
+            bean.setSubteam(subTeamEdit.getText().toString());
+            bean.setLastwatch(lastWatchEdit.getText().toString());
+            bean.setRemark(remarkEdit.getText().toString());
+            bean.setUname(uName);
+            bean.setUpassword(uPassword);
+        } catch (Exception ignored) {
+            return null;
+        }
+        return new Gson().toJson(bean);
+    }
+
+    private String getUpdateTvJson(){
+        TvUpdateBean bean = new TvUpdateBean();
+        try {
+            // 数据填充
+            bean.setId(id);
+            bean.setSeriesflag(Boolean.valueOf(seriesFlagEdit.getText().toString()));
+            bean.setSeriesid(Integer.valueOf(seriesIdEdit.getText().toString()));
+            bean.setTv_name(nameEdit.getText().toString());
+            bean.setTv_year(yearEdit.getText().toString());
+            bean.setDirector(directorEdit.getText().toString());
+            bean.setScreenwriter(screenWriterEdit.getText().toString());
+            bean.setMake(makeEdit.getText().toString());
+            bean.setLogo(logoEdit.getText().toString());
+            bean.setAmount(Integer.valueOf(amountEdit.getText().toString()));
+            bean.setLocalflag(Boolean.valueOf(localFlagEdit.getText().toString()));
+            bean.setLocalurl(localUrlEdit.getText().toString());
+            bean.setRemoteflag(Boolean.valueOf(remoteFlagEdit.getText().toString()));
+            bean.setRemoteurl(remoteUrlEdit.getText().toString());
+            bean.setContainer(containerEdit.getText().toString());
+            bean.setCodev(codeVEdit.getText().toString());
+            bean.setCodea(codeAEdit.getText().toString());
+            bean.setSubtype(subTypeEdit.getText().toString());
+            bean.setSubteam(subTeamEdit.getText().toString());
+            bean.setLastwatch(lastWatchEdit.getText().toString());
+            bean.setRemark(remarkEdit.getText().toString());
+            bean.setUname(uName);
+            bean.setUpassword(uPassword);
+        } catch (Exception ignored){
+            return null;
+        }
+        return new Gson().toJson(bean);
+    }
+
+    private String getAddSvJson(){
+        // 实例化一个 添加动漫 实体类
+        SvAddBean bean = new SvAddBean();
+        try {
+            bean.setSv_type(svType.getText().toString());
+            bean.setSv_name(nameEdit.getText().toString());
+            bean.setSv_year(yearEdit.getText().toString());
+            bean.setAuthor(makeEdit.getText().toString());
+            bean.setLogo(logoEdit.getText().toString());
+            bean.setLocalflag(Boolean.valueOf(localFlagEdit.getText().toString()));
+            bean.setLocalurl(localUrlEdit.getText().toString());
+            bean.setRemoteflag(Boolean.valueOf(remoteFlagEdit.getText().toString()));
+            bean.setRemoteurl(remoteUrlEdit.getText().toString());
+            bean.setContainer(containerEdit.getText().toString());
+            bean.setCodev(codeVEdit.getText().toString());
+            bean.setCodea(codeAEdit.getText().toString());
+            bean.setRemark(remarkEdit.getText().toString());
+            bean.setUname(uName);
+            bean.setUpassword(uPassword);
+        } catch (Exception ignored) {
+            return null;
+        }
+        return new Gson().toJson(bean);
+    }
+
+    private String getUpdateSvJson(){
+        SvUpdateBean bean = new SvUpdateBean();
+        try {
+            // 数据填充
+            bean.setId(id);
+            bean.setSv_name(nameEdit.getText().toString());
+            bean.setSv_year(yearEdit.getText().toString());
+            bean.setAuthor(makeEdit.getText().toString());
+            bean.setLogo(logoEdit.getText().toString());
+            bean.setLocalflag(Boolean.valueOf(localFlagEdit.getText().toString()));
+            bean.setLocalurl(localUrlEdit.getText().toString());
+            bean.setRemoteflag(Boolean.valueOf(remoteFlagEdit.getText().toString()));
+            bean.setRemoteurl(remoteUrlEdit.getText().toString());
+            bean.setContainer(containerEdit.getText().toString());
+            bean.setCodev(codeVEdit.getText().toString());
+            bean.setCodea(codeAEdit.getText().toString());
+            bean.setRemark(remarkEdit.getText().toString());
+            bean.setUname(uName);
+            bean.setUpassword(uPassword);
+        } catch (Exception ignored){
+            return null;
+        }
+        return new Gson().toJson(bean);
     }
 
 }

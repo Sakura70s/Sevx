@@ -9,16 +9,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import top.sakura70s.sevx.SevxConsts;
 import top.sakura70s.sevx.activitys.MainActivity;
 import top.sakura70s.sevx.R;
 import top.sakura70s.sevx.beans.film.VideoFilmBean;
+import top.sakura70s.sevx.helpers.JsonFrom;
+import top.sakura70s.sevx.helpers.RequestHelper;
 
 public class VideoItemFilmAdapter extends RecyclerView.Adapter<VideoItemFilmAdapter.VideoItemFilmHolder> {
     // 定义 传进来的 集合
@@ -54,6 +65,35 @@ public class VideoItemFilmAdapter extends RecyclerView.Adapter<VideoItemFilmAdap
             intent.putExtra(SevxConsts.UPASSWORD, uPassword);
             context.startActivity(intent);
 
+        });
+
+        holder.itemView.setOnLongClickListener(view -> {
+            AlertDialog dialog = new AlertDialog.Builder(view.getContext())
+                    .setIcon(R.drawable.ic_delete)
+                    .setTitle("删除")
+                    .setMessage("确定要删除吗？")
+                    .setNegativeButton("取消", (dialogInterface, i) -> dialogInterface.dismiss())
+                    .setPositiveButton("确定", (dialogInterface, i) -> {
+                        dialogInterface.dismiss();
+                        // 构建请求体
+                        JSONObject json = new JsonFrom().deleteJson(id, uName, uPassword);
+                        Request request = new RequestHelper().getDeleteRequest(SevxConsts.VIDEO_FILM_DELETE, json);
+                        // 执行删除
+                        new OkHttpClient().newCall(request).enqueue(new Callback() {
+                            @Override
+                            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+                            }
+
+                            @Override
+                            public void onResponse(@NonNull Call call, @NonNull Response response) {
+
+                            }
+                        });
+                    }).create();
+            // 显示模态对话框
+            dialog.show();
+            return true;
         });
     }
 

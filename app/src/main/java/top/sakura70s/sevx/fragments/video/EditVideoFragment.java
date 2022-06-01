@@ -319,6 +319,7 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
                         new Thread(() -> {
                             if (httpHelper.animationAdd(addAnimationJson)) {
                                 editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加成功！", Toast.LENGTH_SHORT).show());
+                                editActivity.finish();
                             } else {
                                 editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加失败！", Toast.LENGTH_SHORT).show());
                             }
@@ -336,6 +337,7 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
                         new Thread(() -> {
                             if (httpHelper.filmAdd(addFilmJson)) {
                                 editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加成功！", Toast.LENGTH_SHORT).show());
+                                editActivity.finish();
                             } else {
                                 editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加失败！", Toast.LENGTH_SHORT).show());
                             }
@@ -351,6 +353,7 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
                         new Thread(() -> {
                             if (httpHelper.tvAdd(addTvJson)) {
                                 editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加成功！", Toast.LENGTH_SHORT).show());
+                                editActivity.finish();
                             } else {
                                 editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加失败！", Toast.LENGTH_SHORT).show());
                             }
@@ -366,6 +369,7 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
                         new Thread(() -> {
                             if (httpHelper.svAdd(addSvJson)) {
                                 editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加成功！", Toast.LENGTH_SHORT).show());
+                                editActivity.finish();
                             } else {
                                 editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加失败！", Toast.LENGTH_SHORT).show());
                             }
@@ -387,6 +391,7 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
                     new Thread(() -> {
                         if (httpHelper.animationUpdate(animationUpdateJson)) {
                             editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新成功！", Toast.LENGTH_SHORT).show());
+                            editActivity.finish();
                         } else {
                             editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新失败！", Toast.LENGTH_SHORT).show());
                         }
@@ -398,6 +403,7 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
                     new Thread(() -> {
                         if (httpHelper.filmUpdate(filmUpdateJson)) {
                             editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新成功！", Toast.LENGTH_SHORT).show());
+                            editActivity.finish();
                         } else {
                             editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新失败！", Toast.LENGTH_SHORT).show());
                         }
@@ -409,6 +415,7 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
                     new Thread(() -> {
                         if (httpHelper.tvUpdate(tvUpdateJson)) {
                             editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新成功！", Toast.LENGTH_SHORT).show());
+                            editActivity.finish();
                         } else {
                             editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新失败！", Toast.LENGTH_SHORT).show());
                         }
@@ -420,6 +427,7 @@ public class EditVideoFragment extends Fragment implements View.OnClickListener 
                     new Thread(() -> {
                         if (httpHelper.svUpdate(svUpdateJson)) {
                             editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新成功！", Toast.LENGTH_SHORT).show());
+                            editActivity.finish();
                         } else {
                             editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新失败！", Toast.LENGTH_SHORT).show());
                         }

@@ -268,6 +268,7 @@ public class BookEditFragment extends Fragment implements View.OnClickListener {
                         new Thread(() -> {
                             if (httpHelper.novelAdd(addNovelJson)){
                                 editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加成功！", Toast.LENGTH_SHORT).show());
+                                editActivity.finish();
                             } else {
                                 editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加失败！", Toast.LENGTH_SHORT).show());
                             }
@@ -283,6 +284,7 @@ public class BookEditFragment extends Fragment implements View.OnClickListener {
                         new Thread(() -> {
                             if (httpHelper.comicAdd(addComicJson)){
                                 editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加成功！", Toast.LENGTH_SHORT).show());
+                                editActivity.finish();
                             } else {
                                 editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加失败！", Toast.LENGTH_SHORT).show());
                             }

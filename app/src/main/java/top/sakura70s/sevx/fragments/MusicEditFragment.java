@@ -148,6 +148,7 @@ public class MusicEditFragment extends Fragment implements View.OnClickListener 
                 new Thread(() -> {
                     if (httpHelper.musicAdd(addMusicJson)){
                         editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加成功！", Toast.LENGTH_SHORT).show());
+                        editActivity.finish();
                     } else {
                         editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "添加失败！", Toast.LENGTH_SHORT).show());
                     }
@@ -164,6 +165,7 @@ public class MusicEditFragment extends Fragment implements View.OnClickListener 
                 new Thread(() -> {
                     if (httpHelper.musicUpdate(updateMusicJson)){
                         editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新成功！", Toast.LENGTH_SHORT).show());
+                        editActivity.finish();
                     } else {
                         editActivity.runOnUiThread(() -> Toast.makeText(getContext(), "更新失败！", Toast.LENGTH_SHORT).show());
                     }

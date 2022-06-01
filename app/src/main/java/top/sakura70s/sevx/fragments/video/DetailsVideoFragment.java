@@ -75,6 +75,11 @@ public class DetailsVideoFragment extends Fragment {
         this.setData();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
     private void initData() {
         bundle = getArguments();
         if (bundle != null) {
